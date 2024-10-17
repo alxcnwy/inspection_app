@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Runs</h1>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Run ID</th>
+            <th>Model Name</th>
+            <th>S3 Path</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for run in runs %}
+        <tr>
+            <td>{{ run.id }}</td>
+            <td>{{ run.model.name }}</td>
+            <td>{{ run.s3_path }}</td>
+            <td>{{ run.result }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

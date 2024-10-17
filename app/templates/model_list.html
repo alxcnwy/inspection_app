@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Models</h1>
+    <a href="{{ url_for('main.model_create') }}" class="btn btn-primary">Create New Model</a>
+</div>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Last Run</th>
+            <th>Last Run Result</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in model_data %}
+        <tr>
+            <td><strong>{{ entry.model.name }}</strong></td>
+            <td>{{ entry.model.description }}</td>
+            <td>
+                {% if entry.model.status == 'ready' %}
+                    <span class="badge bg-success">Ready</span>
+                {% elif entry.model.status == 'setup' %}
+                    <span class="badge bg-secondary">Setup</span>
+                {% elif entry.model.status == 'running' %}
+                    <span class="badge bg-warning text-dark">Running</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if entry.last_run %}
+                    {{ entry.last_run.strftime('%Y-%m-%d %H:%M:%S') }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                {% if entry.last_run_result %}
+                    {{ entry.last_run_result }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('main.model_detail', model_id=entry.model.id) }}" class="btn btn-primary">View</a>
+                <form action="{{ url_for('main.delete_model', model_id=entry.model.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this model?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

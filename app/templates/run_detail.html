@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Run Details</h2>
+<p>Model: {{ run.model.name }}</p>
+<p>S3 Path: {{ run.s3_path }}</p>
+<h3>Inspection Results</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Result</th>
+            <th>Reason</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inspection in inspections %}
+        <tr>
+            <td><img src="{{ inspection.image_url }}" alt="Inspection Image" style="width: 100px;"></td>
+            <td>{{ 'PASS' if inspection.pass_fail else 'FAIL' }}</td>
+            <td>{{ inspection.reason }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

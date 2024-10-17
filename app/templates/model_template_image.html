@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Step 1/3: Upload Template Image</h2>
+<form method="POST" action="{{ url_for('main.upload_template_image') }}" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="template_image" class="form-label">Choose Template Image</label>
+        <input type="file" id="template_image" name="template_image" class="form-control" accept="image/*" onchange="previewImage(event)" required>
+        <img id="imagePreview" style="max-width: 300px; margin-top: 20px;">
+    </div>
+    <button type="submit" class="btn btn-primary">Next</button>
+</form>
+
+<script>
+    function previewImage(event) {
+        const image = document.getElementById('imagePreview');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        image.style.display = 'block';
+    }
+</script>
+{% endblock %}
