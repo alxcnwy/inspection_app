@@ -25,7 +25,6 @@
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69518801_1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69518801_2.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69519600.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69519600_1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69525385.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69525587.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69525587_1.jpg" beforeDir="false" />
@@ -33,7 +32,6 @@
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69526808_1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69526808_2.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69527447.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69527447_1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69527447_2.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69528139.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69528139_1.jpg" beforeDir="false" />
@@ -42,8 +40,6 @@
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69532634.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69532634_1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286_2.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286_3.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897_1.jpg" beforeDir="false" />
@@ -69,13 +65,13 @@
       <change beforePath="$PROJECT_DIR$/app/static/uploads/template.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/template_1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/uploads/template_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/uploads/template_3.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/model_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/model_good_images.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_good_images.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/model_regions.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_regions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/model_template_image.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_template_image.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,19 +89,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python">
       <module name="app" />

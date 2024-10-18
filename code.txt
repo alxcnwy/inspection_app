@@ -9,14 +9,86 @@
     gpt.py
     app/
         .DS_Store
+        align.py
         models.py
         __init__.py
         routes.py
         static/
+            .DS_Store
             styles.css
             logo.png
             uploads/
+                ImageID-70014907.jpg
+                ImageID-70014721.jpg
+                ImageID-69992311.jpg
+                ImageID-69527447.jpg
+                ImageID-69526808.jpg
+                ImageID-69611658_aligned.jpg
+                ImageID-69578836_aligned.jpg
                 .DS_Store
+                ImageID-69541897.jpg
+                ImageID-69539780_aligned.jpg
+                ImageID-70014651.jpg
+                ImageID-69525385_aligned.jpg
+                ImageID-69539780_1.jpg
+                ImageID-69633161_aligned.jpg
+                ImageID-69506170.jpg
+                input_7.jpg
+                ImageID-69541897_aligned.jpg
+                ImageID-69525385.jpg
+                ImageID-69640765.jpg
+                input_6.jpg
+                ImageID-69539780_2.jpg
+                input_4.jpg
+                ImageID-70081023_1.jpg
+                input_5.jpg
+                ImageID-69633161.jpg
+                input_1.jpg
+                input_10.jpg
+                ImageID-69499858.jpg
+                ImageID-69611658.jpg
+                input_10_aligned.jpg
+                input_2.jpg
+                ImageID-69646304.jpg
+                ImageID-70014544.jpg
+                ImageID-69539780.jpg
+                ImageID-69518801_aligned.jpg
+                ImageID-70625919.jpg
+                input_3.jpg
+                template_1.jpg
+                ImageID-70081023.jpg
+                ImageID-69519600_aligned.jpg
+                ImageID-69567194_aligned.jpg
+                ImageID-69519600_1.jpg
+                template_2.jpg
+                ImageID-69567194.jpg
+                template_3.jpg
+                input_8.jpg
+                ImageID-69539780_2_aligned.jpg
+                ImageID-69534286.jpg
+                input_9.jpg
+                ImageID-69518801.jpg
+                ImageID-71031962.jpg
+                ImageID-69578836.jpg
+                ImageID-69539780_1_2.jpg
+                input.jpg
+                ImageID-69519600.jpg
+                ImageID-70096298.jpg
+                ImageID-69611658_1_aligned.jpg
+                ImageID-69539780_1_1.jpg
+                template.jpg
+                ImageID-69546267.jpg
+                ImageID-69556840.jpg
+                ImageID-69539780_1_aligned.jpg
+                ImageID-69499858_aligned.jpg
+                ImageID-70590958.jpg
+                ImageID-69983010.jpg
+                ImageID-69527447_1.jpg
+                ImageID-69527447_aligned.jpg
+                ImageID-70014544_1.jpg
+                ImageID-69534286_1.jpg
+                ImageID-69611658_1.jpg
+                ImageID-69534286_2.jpg
         templates/
             base.html
             model_list.html
@@ -184,7 +256,7 @@ The `run_inspection` function is currently mocked to return "pass" for every ima
 ##################################
 .DS_Store
 uploads/*
-
+app/static/uploads/*
 
 ##################################
 ### File: gpt.py
@@ -242,6 +314,118 @@ if result_string.strip():  # Check if the string is not empty
 else:
     print("No files were processed, code.txt was not written.")
 
+
+
+##################################
+### File: app/align.py
+##################################
+import os
+import cv2
+import numpy as np
+
+
+# Define regions (x1, y1, x2, y2)
+regions = {
+    'top_banner': (177, 142, 1092, 334),
+    'sim_cards': (172, 310, 508, 735),
+    'main_graphic': (523, 351, 1174, 814),
+}
+
+def align_and_crop_regions(input_image_path, output_messages, upload_folder):
+    output_messages.append("Starting alignment process...")
+
+    # Get the absolute path of the app's root directory
+    app_root = os.path.dirname(os.path.abspath(__file__))
+
+    # Load images
+    template_path = os.path.join(app_root, 'template.jpg')
+    template = cv2.imread(template_path)
+    input_image = cv2.imread(input_image_path)
+
+    if template is None:
+        output_messages.append(f"Error loading template image from {template_path}")
+        return None, None
+    if input_image is None:
+        output_messages.append(f"Error loading input image from {input_image_path}")
+        return None, None
+
+    # Convert to grayscale
+    gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    gray_input = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
+
+    # Detect SIFT keypoints and descriptors
+    sift = cv2.SIFT_create(nfeatures=50000)
+    keypoints_template, descriptors_template = sift.detectAndCompute(gray_template, None)
+    keypoints_input, descriptors_input = sift.detectAndCompute(gray_input, None)
+
+    # Use FLANN based matcher
+    FLANN_INDEX_KDTREE = 1
+    index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
+    search_params = dict(checks=500)
+    flann = cv2.FlannBasedMatcher(index_params, search_params)
+    matches = flann.knnMatch(descriptors_template, descriptors_input, k=2)
+
+    # Store good matches using Lowe's ratio test
+    good_matches = [m for m, n in matches if m.distance < 0.7 * n.distance]
+
+    # Extract matched points and compute homography
+    if len(good_matches) > 10:
+        src_pts = np.float32([keypoints_template[m.queryIdx].pt for m in good_matches]).reshape(-1, 1, 2)
+        dst_pts = np.float32([keypoints_input[m.trainIdx].pt for m in good_matches]).reshape(-1, 1, 2)
+
+        # Compute Homography
+        H, mask = cv2.findHomography(dst_pts, src_pts, cv2.RANSAC, 5.0)
+
+        # Warp the input image to align with the template
+        height, width, channels = template.shape
+        aligned_image = cv2.warpPerspective(input_image, H, (width, height))
+
+        # Save aligned image
+        output_aligned_path = os.path.join(upload_folder, 'aligned.jpg')
+        cv2.imwrite(output_aligned_path, aligned_image)
+
+        max_vals = []
+        output_messages.append("Cropping regions...")
+
+        # Crop and save each region
+        for region_name, (x1, y1, x2, y2) in regions.items():
+            # Crop the region from the aligned image
+            aligned_crop = aligned_image[y1:y2, x1:x2]
+
+            # Create directory for region if it doesn't exist
+            region_dir = os.path.join(upload_folder, 'regions', region_name)
+            if not os.path.exists(region_dir):
+                os.makedirs(region_dir)
+
+            # Save cropped region as 'input.jpg'
+            cropped_image_path = os.path.join(region_dir, 'input.jpg')
+            cv2.imwrite(cropped_image_path, aligned_crop)
+            output_messages.append(f"Cropped and saved region '{region_name}'.")
+
+            # Check for alignment success
+            template_crop = template[y1:y2, x1:x2]
+
+            # Convert crops to grayscale
+            aligned_crop_gray = cv2.cvtColor(aligned_crop, cv2.COLOR_BGR2GRAY)
+            template_crop_gray = cv2.cvtColor(template_crop, cv2.COLOR_BGR2GRAY)
+
+            # Perform template matching
+            match_result = cv2.matchTemplate(aligned_crop_gray, template_crop_gray, cv2.TM_CCOEFF_NORMED)
+
+            # Get the match score
+            _, max_val, _, _ = cv2.minMaxLoc(match_result)
+            max_vals.append(max_val)
+
+        # Check if the maximum of the max_vals is less than 0.40
+        if max(max_vals) < 0.40:
+            return None, None
+        else:
+            output_messages.append("Alignment successful.")
+            # Return the homography matrix and input image dimensions
+            input_image_shape = input_image.shape
+            return H, input_image_shape
+    else:
+        return None, None
 
 
 ##################################
@@ -478,17 +662,23 @@ def draw_regions():
     return render_template('model_regions.html', model=model)
 
 
-@main.route('/regions/<int:region_id>/bad_images', methods=['GET'])
-def get_region_bad_images(region_id):
+@main.route('/regions/<int:region_id>/data', methods=['GET'])
+def get_region_data(region_id):
     region = ModelRegion.query.get_or_404(region_id)
-    bad_images = {
+    region_data = {
+        'name': region.name,
+        'x1': region.x1,
+        'y1': region.y1,
+        'x2': region.x2,
+        'y2': region.y2,
         'bad_image_1_url': region.bad_image_1_url,
         'bad_image_2_url': region.bad_image_2_url,
         'bad_image_3_url': region.bad_image_3_url,
         'bad_image_4_url': region.bad_image_4_url,
         'bad_image_5_url': region.bad_image_5_url
     }
-    return bad_images
+    return region_data
+
 
 
 @main.route('/models/finish_regions', methods=['GET', 'POST'])
@@ -869,213 +1059,241 @@ h3 {
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 4/4: Define Bad Regions</h2>
-<p>Draw regions on the template image, name them, and upload bad images for each region.</p>
+    <h2>Step 4/4: Define Bad Regions</h2>
+    <p>Draw regions on the template image, name them, and upload bad images for each region.</p>
 
-<div class="row">
-    <!-- Sidebar for region names and uploading bad images -->
-    <div class="col-md-4">
-        <!-- Show list of regions added -->
-        <div class="d-flex justify-content-between align-items-center mb-2">
-            <h4>Regions</h4>
-            <button id="addRegionBtn" class="btn btn-primary" onclick="addNewRegion()">Add Region</button>
+    <div class="row">
+        <!-- Sidebar for region names and uploading bad images -->
+        <div class="col-md-4">
+            <!-- Show list of regions added -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h4>Regions</h4>
+                <button id="addRegionBtn" class="btn btn-primary" onclick="addNewRegion()">Add Region</button>
+            </div>
+
+            <ul id="regionList" class="list-group mb-3">
+                {% for region in model.regions %}
+                    <li class="list-group-item" data-region-id="{{ region.id }}"
+                        onclick="selectRegion({{ region.id }}, {{ region.x1 }}, {{ region.y1 }}, {{ region.x2 }}, {{ region.y2 }}, {{ region.bad_images|default([])|tojson }})">
+                        {{ region.name }} ({{ region.x1 }}, {{ region.y1 }} - {{ region.x2 }}, {{ region.y2 }})
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Instructions to draw a region -->
+            <p id="drawInstruction" style="display:none; color:blue;">Draw region on the image.</p>
+
+            <!-- Form to name the region and upload bad images -->
+            <form id="regionForm" method="POST" action="{{ url_for('main.upload_region_images') }}"
+                  enctype="multipart/form-data" style="display:none;">
+                <input type="hidden" name="x1" id="x1">
+                <input type="hidden" name="y1" id="y1">
+                <input type="hidden" name="x2" id="x2">
+                <input type="hidden" name="y2" id="y2">
+                <h4>Region Name</h4>
+                <div class="mb-3">
+                    <input type="text" id="region_name" name="region_name" class="form-control" required>
+                </div>
+                <h4>Upload Bad Images for the Region:</h4>
+                {% for i in range(1, 6) %}
+                    <div class="mb-3">
+                        <label for="bad_image_{{ i }}" class="form-label">Upload Bad Image {{ i }}</label>
+                        <input type="file" id="bad_image_{{ i }}" name="bad_image_{{ i }}" class="form-control"
+                               accept="image/*" onchange="previewImage(event, {{ i }})">
+                        <img id="badImagePreview_{{ i }}" style="max-width: 100px; margin-top: 10px; display:none;">
+                    </div>
+                {% endfor %}
+                <div id="error-message" style="color: red; display: none;">Please upload all 5 bad images.</div>
+                <button type="submit" class="btn btn-primary">Save Region</button>
+                <button type="button" class="btn btn-danger" id="resetRegion">Cancel</button>
+            </form>
+
+            <!-- Button to save all model regions -->
+            <form method="POST" action="{{ url_for('main.finish_regions') }}">
+                <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;">Save Model
+                    Regions
+                </button>
+            </form>
         </div>
 
-        <ul id="regionList" class="list-group mb-3">
-            {% for region in model.regions %}
-            <li class="list-group-item" data-region-id="{{ region.id }}" onclick="selectRegion({{ region.id }}, {{ region.x1 }}, {{ region.y1 }}, {{ region.x2 }}, {{ region.y2 }})">
-                {{ region.name }} ({{ region.x1 }}, {{ region.y1 }} - {{ region.x2 }}, {{ region.y2 }})
-            </li>
-            {% endfor %}
-        </ul>
-
-        <!-- Instructions to draw a region -->
-        <p id="drawInstruction" style="display:none; color:blue;">Draw region on the image.</p>
-
-        <!-- Form to name the region and upload bad images -->
-        <form id="regionForm" method="POST" action="{{ url_for('main.upload_region_images') }}" enctype="multipart/form-data" style="display:none;">
-            <input type="hidden" name="x1" id="x1">
-            <input type="hidden" name="y1" id="y1">
-            <input type="hidden" name="x2" id="x2">
-            <input type="hidden" name="y2" id="y2">
-            <h4>New Region Name</h4>
-            <div class="mb-3">
-                <input type="text" id="region_name" name="region_name" class="form-control" required>
-            </div>
-            <h4>Upload Bad Images for the Region:</h4>
-            {% for i in range(1, 6) %}
-            <div class="mb-3">
-                <label for="bad_image_{{ i }}" class="form-label">Upload Bad Image {{ i }}</label>
-                <input type="file" id="bad_image_{{ i }}" name="bad_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})">
-                <img id="badImagePreview_{{ i }}" style="max-width: 100px; margin-top: 10px; display:none;">
-            </div>
-            {% endfor %}
-            <div id="error-message" style="color: red; display: none;">Please upload all 5 bad images.</div>
-            <button type="submit" class="btn btn-primary">Save Region</button>
-            <button type="button" class="btn btn-danger" id="resetRegion">Reset Region</button>
-        </form>
-
-        <!-- Button to save all model regions -->
-        <form method="POST" action="{{ url_for('main.finish_regions') }}">
-            <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;">Save Model Regions</button>
-        </form>
+        <!-- Canvas for drawing the regions -->
+        <div class="col-md-8">
+            <img id="templateImage" src="{{ model.template_image_url }}" alt="Template Image" class="img-fluid mb-3"
+                 style="display:none;">
+            <canvas id="templateCanvas" class="border"></canvas>
+        </div>
     </div>
 
-    <!-- Canvas for drawing the regions -->
-    <div class="col-md-8">
-        <img id="templateImage" src="{{ model.template_image_url }}" alt="Template Image" class="img-fluid mb-3" style="display:none;">
-        <canvas id="templateCanvas" class="border"></canvas>
-    </div>
-</div>
+    <script>
 
-<script>
-    const canvas = document.getElementById('templateCanvas');
-    const ctx = canvas.getContext('2d');
-    let startX, startY, isDrawing = false;
-    let regions = [];
-    let currentRegion = null;
+const canvas = document.getElementById('templateCanvas');
+const ctx = canvas.getContext('2d');
+let startX, startY, isDrawing = false;
+let regions = [];
+let currentRegion = null;
 
-    const templateImage = document.getElementById('templateImage');
-    const regionForm = document.getElementById('regionForm');
-    const regionList = document.getElementById('regionList');
-    const addRegionBtn = document.getElementById('addRegionBtn');
-    const drawInstruction = document.getElementById('drawInstruction');
+const templateImage = document.getElementById('templateImage');
+const regionForm = document.getElementById('regionForm');
+const regionList = document.getElementById('regionList');
+const addRegionBtn = document.getElementById('addRegionBtn');
+const drawInstruction = document.getElementById('drawInstruction');
+const saveRegionsBtn = document.getElementById('saveRegionsBtn');  // Get the Save Model Regions button
 
-    // Initially disable drawing
-    let drawingEnabled = false;
-    let selectedRegionId = null;
+// Initially disable drawing
+let drawingEnabled = false;
+let selectedRegionId = null;
 
-    // Draw the template image on the canvas
-    templateImage.onload = function() {
-        canvas.width = templateImage.width;
-        canvas.height = templateImage.height;
-        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-        templateImage.style.display = 'none'; // hide the actual image element
-    };
+// Hide the "Save Model Regions" button initially
+saveRegionsBtn.style.display = 'block';  // Button is visible initially
 
-    templateImage.src = templateImage.src; // Trigger the image load
+// Draw the template image on the canvas
+templateImage.onload = function () {
+    canvas.width = templateImage.width;
+    canvas.height = templateImage.height;
+    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+    templateImage.style.display = 'none'; // hide the actual image element
+};
 
-    // Drawing functionality
-    canvas.addEventListener('mousedown', (e) => {
-        if (!drawingEnabled) return; // Only draw after clicking "Add Region"
-        isDrawing = true;
-        [startX, startY] = [e.offsetX, e.offsetY];
-    });
+templateImage.src = templateImage.src; // Trigger the image load
 
-    canvas.addEventListener('mousemove', (e) => {
-        if (!isDrawing) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
-        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-        ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY);
-    });
+// Drawing functionality
+canvas.addEventListener('mousedown', (e) => {
+    if (!drawingEnabled) return; // Only draw after clicking "Add Region"
+    isDrawing = true;
+    [startX, startY] = [e.offsetX, e.offsetY];
+});
 
-    canvas.addEventListener('mouseup', (e) => {
-        if (!drawingEnabled) return;
-        isDrawing = false;
-        document.getElementById('x1').value = startX;
-        document.getElementById('y1').value = startY;
-        document.getElementById('x2').value = e.offsetX;
-        document.getElementById('y2').value = e.offsetY;
-        regionForm.style.display = 'block';
-        drawInstruction.style.display = 'none'; // Hide "Draw region" message
-        regions.push({x1: startX, y1: startY, x2: e.offsetX, y2: e.offsetY});
-        drawingEnabled = false;
-        addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
-    });
+canvas.addEventListener('mousemove', (e) => {
+    if (!isDrawing) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+    ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY);
+});
 
-    // Draw a single region
-    function drawRegion(x1, y1, x2, y2, highlight=false) {
-        if (highlight) {
-            ctx.strokeStyle = 'red';
-        } else {
-            ctx.strokeStyle = 'black';
-        }
-        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+canvas.addEventListener('mouseup', (e) => {
+    if (!drawingEnabled) return;
+    isDrawing = false;
+    document.getElementById('x1').value = startX;
+    document.getElementById('y1').value = startY;
+    document.getElementById('x2').value = e.offsetX;
+    document.getElementById('y2').value = e.offsetY;
+    regionForm.style.display = 'block';
+    drawInstruction.style.display = 'none'; // Hide "Draw region" message
+    regions.push({x1: startX, y1: startY, x2: e.offsetX, y2: e.offsetY});
+    drawingEnabled = false;
+    addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
+    saveRegionsBtn.style.display = 'none';  // Hide "Save Model Regions" button while adding or editing
+});
+
+// Draw a single region
+function drawRegion(x1, y1, x2, y2, highlight = false) {
+    ctx.strokeStyle = highlight ? 'red' : 'black';
+    ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+}
+
+// Add new region
+function addNewRegion() {
+    // Reset the form fields
+    regionForm.reset();
+
+    // Clear image previews
+    for (let i = 1; i <= 5; i++) {
+        const imgPreview = document.getElementById(`badImagePreview_${i}`);
+        imgPreview.src = '';
+        imgPreview.style.display = 'none';
     }
 
-    // Add new region
-    function addNewRegion() {
-        regionForm.reset();
-        regionForm.style.display = 'none'; // Hide the form initially
-        drawInstruction.style.display = 'block'; // Show "Draw region on the image"
-        addRegionBtn.style.display = 'none'; // Hide "Add Region" button
-        drawingEnabled = true;
-        // Clear selection in the sidebar
-        document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+    regionForm.style.display = 'none'; // Hide the form initially
+    drawInstruction.style.display = 'block'; // Show "Draw region on the image"
+    addRegionBtn.style.display = 'none'; // Hide "Add Region" button
+    saveRegionsBtn.style.display = 'none';  // Hide "Save Model Regions" button while adding a new region
+    drawingEnabled = true;
+
+    // Clear selection in the sidebar
+    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+
+    // Deselect any previously selected region
+    selectedRegionId = null;
+}
+
+// Deselect region and hide form
+function deselectRegion() {
+    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+    regionForm.style.display = 'none'; // Hide the form
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+    selectedRegionId = null;
+
+    // Show the "Save Model Regions" button again after deselecting
+    saveRegionsBtn.style.display = 'block';
+}
+
+// Populate form data with region information using AJAX
+function populateRegionForm(regionId) {
+    fetch(`/regions/${regionId}/data`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('x1').value = data.x1;
+            document.getElementById('y1').value = data.y1;
+            document.getElementById('x2').value = data.x2;
+            document.getElementById('y2').value = data.y2;
+            document.getElementById('region_name').value = data.name;
+
+            // Update image previews if available
+            for (let i = 1; i <= 5; i++) {
+                const imageUrl = data[`bad_image_${i}_url`];
+                const imgPreview = document.getElementById(`badImagePreview_${i}`);
+                if (imageUrl) {
+                    imgPreview.src = imageUrl;
+                    imgPreview.style.display = 'block';
+                } else {
+                    imgPreview.style.display = 'none';
+                }
+            }
+            regionForm.style.display = 'block';
+
+            // Hide "Save Model Regions" button while editing
+            saveRegionsBtn.style.display = 'none';
+        })
+        .catch(error => console.error('Error fetching region data:', error));
+}
+
+// Select a region from the sidebar
+function selectRegion(regionId, x1, y1, x2, y2) {
+    // Check if the region is already selected
+    if (selectedRegionId === regionId) {
+        // If it's already selected, deselect it and hide the form
+        deselectRegion();
+        return;
     }
 
-    // Reset button logic
-    document.getElementById('resetRegion').addEventListener('click', function() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-        regionForm.reset();
-        document.getElementById('x1').value = '';
-        document.getElementById('y1').value = '';
-        document.getElementById('x2').value = '';
-        document.getElementById('y2').value = '';
-        addRegionBtn.style.display = 'block'; // Show "Add Region" button again
-        regionForm.style.display = 'none'; // Hide the form
-        drawInstruction.style.display = 'none'; // Hide "Draw region" message
-        drawingEnabled = false;
-        selectedRegionId = null;
-    });
+    // Set this region as the selected one
+    selectedRegionId = regionId;
 
-    // Validate if all bad images are selected
-    document.getElementById('regionForm').addEventListener('submit', function(e) {
-        const badImages = Array.from(document.querySelectorAll('input[type="file"]'));
-        const allImagesUploaded = badImages.every(input => input.files.length > 0);
+    // Highlight the selected region in the list
+    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+    const selectedRegion = document.querySelector(`[data-region-id="${regionId}"]`);
+    selectedRegion.classList.add('active');
 
-        if (!allImagesUploaded) {
-            e.preventDefault();
-            document.getElementById('error-message').style.display = 'block';
-        } else {
-            document.getElementById('error-message').style.display = 'none';
-        }
-    });
+    // Clear the canvas and redraw all regions, highlighting the selected one
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+    drawRegion(x1, y1, x2, y2, true); // Highlight the selected region
 
-    // Preview image on file input change
-    function previewImage(event, index) {
-        const image = document.getElementById('badImagePreview_' + index);
-        image.src = URL.createObjectURL(event.target.files[0]);
-        image.style.display = 'block';
-    }
+    // Fetch region data and populate form
+    populateRegionForm(regionId);
+}
 
-    // Select a region from the sidebar
-    function selectRegion(regionId, x1, y1, x2, y2) {
-        const items = document.querySelectorAll('.list-group-item');
-        items.forEach(item => item.classList.remove('active'));
-        const selectedRegion = document.querySelector(`[data-region-id="${regionId}"]`);
-        selectedRegion.classList.add('active');
+// Reset button logic
+document.getElementById('resetRegion').addEventListener('click', function () {
+    location.reload();
+});
 
-        // Clear the canvas and draw all regions again
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
-        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-        drawRegion(x1, y1, x2, y2, true); // Highlight the selected region
+    </script>
 
-        // Set the selected region
-        selectedRegionId = regionId;
-    }
-
-    // Deselect region when clicking anywhere else on the page
-    document.addEventListener('click', function(event) {
-        const insideRegionList = event.target.closest('.list-group-item') !== null;
-        const insideCanvas = event.target.closest('#templateCanvas') !== null;
-
-        if (!insideRegionList && !insideCanvas) {
-            // Clear selected region if clicked outside
-            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-            selectedRegionId = null;
-
-            // Redraw the canvas without highlighted regions
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-            regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2));
-        }
-    });
-</script>
 {% endblock %}
 
 

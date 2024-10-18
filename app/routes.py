@@ -135,17 +135,23 @@ def draw_regions():
     return render_template('model_regions.html', model=model)
 
 
-@main.route('/regions/<int:region_id>/bad_images', methods=['GET'])
-def get_region_bad_images(region_id):
+@main.route('/regions/<int:region_id>/data', methods=['GET'])
+def get_region_data(region_id):
     region = ModelRegion.query.get_or_404(region_id)
-    bad_images = {
+    region_data = {
+        'name': region.name,
+        'x1': region.x1,
+        'y1': region.y1,
+        'x2': region.x2,
+        'y2': region.y2,
         'bad_image_1_url': region.bad_image_1_url,
         'bad_image_2_url': region.bad_image_2_url,
         'bad_image_3_url': region.bad_image_3_url,
         'bad_image_4_url': region.bad_image_4_url,
         'bad_image_5_url': region.bad_image_5_url
     }
-    return bad_images
+    return region_data
+
 
 
 @main.route('/models/finish_regions', methods=['GET', 'POST'])
