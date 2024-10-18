@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 2/3: Upload Good Images</h2>
+<h2>Step 3/4: Upload Good Images</h2>
 <form method="POST" action="{{ url_for('main.upload_good_images') }}" enctype="multipart/form-data">
     {% for i in range(1, 6) %}
         <div class="mb-3">

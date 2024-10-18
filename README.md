@@ -99,9 +99,5 @@ The `run_inspection` function is currently mocked to return "pass" for every ima
 
 ## Additional Notes
 
-- **AWS S3 Integration:** While AWS S3 is mentioned for handling images, the current implementation mocks the image processing. To use S3, you'll need to configure actual S3 bucket handling.
 - **MySQL Configuration:** You can use other databases supported by SQLAlchemy by updating the `SQLALCHEMY_DATABASE_URI` in `config.py`.
 
-## License
-
-This project is licensed under the MIT License.

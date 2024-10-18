@@ -166,9 +166,16 @@ def finish_regions():
 def model_detail(model_id):
     model = Model.query.get_or_404(model_id)
 
+    # If the model is still being set up, determine which step to send the user to
     if model.status == 'setup':
-        return redirect(url_for('main.upload_template_image'))
+        if not model.template_image_url:
+            return redirect(url_for('main.upload_template_image', model_id=model_id))
+        elif not all([model.good_image_1_url, model.good_image_2_url, model.good_image_3_url, model.good_image_4_url, model.good_image_5_url]):
+            return redirect(url_for('main.upload_good_images', model_id=model_id))
+        else:
+            return redirect(url_for('main.draw_regions', model_id=model_id))
 
+    # If the model is ready or running, show the model detail page
     return render_template('model_detail.html', model=model)
 
 

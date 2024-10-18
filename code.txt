@@ -1,0 +1,1112 @@
+### Directory Tree Structure ###
+./
+    run.py
+    .DS_Store
+    config.py
+    requirements.txt
+    README.md
+    .gitignore
+    gpt.py
+    app/
+        .DS_Store
+        models.py
+        __init__.py
+        routes.py
+        static/
+            styles.css
+            logo.png
+            uploads/
+                .DS_Store
+        templates/
+            base.html
+            model_list.html
+            model_detail.html
+            model_good_images.html
+            run_list.html
+            model_create.html
+            model_template_image.html
+            model_regions.html
+            run_detail.html
+
+### Concatenated Files Content ###
+
+##################################
+### File: run.py
+##################################
+from app import create_app
+
+app = create_app()
+
+# Add `getattr` to Jinja2 globals
+app.jinja_env.globals.update(getattr=getattr)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+##################################
+### File: config.py
+##################################
+import os
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'mysecretkey'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql+pymysql://root:supersecretpassword@localhost:3306/inspection'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    UPLOADED_IMAGES_DEST = os.path.join(os.getcwd(), 'app', 'static', 'uploads')
+    S3_BUCKET = os.environ.get('S3_BUCKET')
+
+
+##################################
+### File: requirements.txt
+##################################
+Flask==1.1.4
+Werkzeug==1.0.1
+Flask-SQLAlchemy==2.4.4
+SQLAlchemy==1.3.18
+Flask-Migrate==2.5.3
+Flask-Uploads==0.2.1
+Flask-Bootstrap==3.3.7.1
+boto3
+pymysql
+MarkupSafe==2.0.1
+
+##################################
+### File: README.md
+##################################
+# Flask Inspection Model App
+
+This Flask app is designed to create, manage, and run inspection models. The application includes multi-step processes for uploading images, selecting regions on a template image, and testing inspection models using images from an S3 bucket.
+
+## Features
+
+- **Multi-step Model Creation:**
+  - Upload a template image
+  - Upload 5 good images
+  - Draw regions on the template image
+  - Upload 5 bad images for each region
+- **Run Inspections:** Run models on S3 images and get pass/fail results.
+- **Model Status Tracking:** Track model statuses as `setup`, `ready`, or `running`.
+- **Mocked Inspection Logic:** The app includes a placeholder inspection logic that returns "pass" for every image.
+
+## Installation
+
+### Requirements
+
+- Python 3.8+
+- MySQL or another SQLAlchemy-supported database
+- AWS S3 (for actual image handling, though it's mocked in this app)
+
+### Setup Instructions
+
+1. **Clone the Repository:**
+    ```bash
+    git clone <repository_url>
+    cd inspection_model_app
+    ```
+
+2. **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Configure MySQL Database:**
+   - Create a MySQL database (e.g., `inspection_model_db`):
+     ```sql
+     CREATE DATABASE inspection_model_db;
+     ```
+   - Update the `config.py` file with your MySQL database credentials:
+     ```python
+     SQLALCHEMY_DATABASE_URI = 'mysql://username:password@localhost/inspection_model_db'
+     ```
+
+4. **Initialize and Migrate Database:**
+    ```bash
+    flask db init
+    flask db migrate -m "Initial migration"
+    flask db upgrade
+    ```
+
+5. **Run the Application:**
+    ```bash
+    flask run
+    ```
+
+6. **Access the App:**
+   Open your browser and visit: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+## How to Use
+
+### Creating a Model
+
+1. **Create a new model:**
+   - Go to the "Models" page and click "Create New Model."
+   - Enter the model name and description.
+   
+2. **Upload Template Image:**
+   - After creating the model, upload a template image.
+   - A preview of the image will be displayed.
+
+3. **Upload Good Images:**
+   - Upload 5 good images, each with a preview.
+   
+4. **Draw Regions:**
+   - Click on the template image to select regions for inspection.
+   - For each region, upload 5 bad images.
+
+5. **Finish Regions:**
+   - Once the regions and bad images are uploaded, click "Finish Regions" to mark the model as `ready`.
+
+### Running a Model
+
+1. **Run the Model:**
+   - If the model is `ready`, click "Run" to run it on S3 images (mocked in this app).
+   - The inspection results (pass/fail) will be displayed.
+
+### Model Status
+
+- **Setup:** The model is still in the setup process.
+- **Ready:** The model is ready to be run on images.
+- **Running:** The model is currently being run on images.
+
+## Mocked Inspection
+
+The `run_inspection` function is currently mocked to return "pass" for every image. You can modify this function in `routes.py` to implement your own inspection logic.
+
+## Additional Notes
+
+- **MySQL Configuration:** You can use other databases supported by SQLAlchemy by updating the `SQLALCHEMY_DATABASE_URI` in `config.py`.
+
+
+
+##################################
+### File: .gitignore
+##################################
+.DS_Store
+uploads/*
+
+
+##################################
+### File: gpt.py
+##################################
+import os
+
+def concatenate_files_in_directory(directory_path):
+    giant_string = ""
+
+    # Traverse the directory and its subdirectories
+    for root, dirs, files in os.walk(directory_path):
+        # Skip directories that start with a dot (.)
+        if any(part.startswith('.') for part in root.split(os.sep)):
+            print(f"Skipping directory: {root}")
+            continue
+
+        for file_name in files:
+            # Skip image files
+            if file_name.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff')):
+                print(f"Skipping image file: {file_name}")
+                continue
+
+            file_path = os.path.join(root, file_name)
+            # Prepend the directory structure to the file name in the string
+            relative_path = os.path.relpath(file_path, directory_path)
+            print(f"Processing file: {relative_path}")
+            giant_string += f"File: {relative_path}\n"
+            try:
+                # Append file contents to the giant string
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    contents = file.read()
+                    giant_string += contents + "\n\n"  # Add an extra newline for separation
+            except Exception as e:
+                # Handle exceptions for reading files
+                print(f"Could not read file {file_path}: {e}")
+    return giant_string
+
+# Replace with the path of your directory
+directory_path = "."
+
+# Delete code.txt if it exists
+output_file_path = "code.txt"
+if os.path.exists(output_file_path):
+    os.remove(output_file_path)
+    print(f"{output_file_path} deleted.")
+
+# Get the concatenated result string
+result_string = concatenate_files_in_directory(directory_path)
+
+# Save the result to a file named "code.txt"
+if result_string.strip():  # Check if the string is not empty
+    with open(output_file_path, "w", encoding="utf-8") as output_file:
+        output_file.write(result_string)
+    print("Giant string saved to code.txt")
+else:
+    print("No files were processed, code.txt was not written.")
+
+
+
+##################################
+### File: app/models.py
+##################################
+from . import db
+from datetime import datetime
+
+
+class Model(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    template_image_url = db.Column(db.String(256))
+    good_image_1_url = db.Column(db.String(256))
+    good_image_2_url = db.Column(db.String(256))
+    good_image_3_url = db.Column(db.String(256))
+    good_image_4_url = db.Column(db.String(256))
+    good_image_5_url = db.Column(db.String(256))
+    status = db.Column(db.String(64), default='setup')  # 'setup', 'ready', 'running'
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
+    regions = db.relationship('ModelRegion', backref='model', lazy=True)
+    runs = db.relationship('Run', backref='model', lazy=True)
+
+
+
+
+class ModelRegion(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    model_id = db.Column(db.Integer, db.ForeignKey('model.id'), nullable=False)
+    name = db.Column(db.String(256))
+    x1 = db.Column(db.Integer, nullable=False)
+    y1 = db.Column(db.Integer, nullable=False)
+    x2 = db.Column(db.Integer, nullable=False)
+    y2 = db.Column(db.Integer, nullable=False)
+    bad_image_1_url = db.Column(db.String(256))
+    bad_image_2_url = db.Column(db.String(256))
+    bad_image_3_url = db.Column(db.String(256))
+    bad_image_4_url = db.Column(db.String(256))
+    bad_image_5_url = db.Column(db.String(256))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
+
+class Run(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    model_id = db.Column(db.Integer, db.ForeignKey('model.id'), nullable=False)
+    s3_path = db.Column(db.String(256))
+    result = db.Column(db.String(64))  # "55/60 PASS"
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Relationship to Inspections
+    inspections = db.relationship('Inspection', backref='run', lazy=True)
+
+
+class Inspection(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    run_id = db.Column(db.Integer, db.ForeignKey('run.id'), nullable=False)
+    image_url = db.Column(db.String(256))
+    pass_fail = db.Column(db.Boolean, default=False)
+    reason = db.Column(db.Text, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+##################################
+### File: app/__init__.py
+##################################
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_bootstrap import Bootstrap
+from config import Config
+
+db = SQLAlchemy()
+migrate = Migrate()
+images = UploadSet('images', IMAGES)
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    db.init_app(app)
+    migrate.init_app(app, db)
+
+    configure_uploads(app, images)
+    Bootstrap(app)
+
+    from .routes import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    return app
+
+
+##################################
+### File: app/routes.py
+##################################
+from flask import Blueprint, render_template, request, redirect, url_for, session
+from .models import db, Model, ModelRegion, Run, Inspection
+from . import images
+import boto3
+
+main = Blueprint('main', __name__)
+
+# AWS S3 client initialization
+s3_client = boto3.client('s3')
+
+
+def run_inspection(image):
+    """Mock function to return 'pass' for every image."""
+    pass_fail = True  # Simulated "pass" result
+    reason = "All regions passed"
+    return pass_fail, reason
+
+
+@main.route('/')
+@main.route('/models')
+def model_list():
+    models = Model.query.all()
+
+    # Prepare model data including last run information
+    model_data = []
+    for model in models:
+        last_run = Run.query.filter_by(model_id=model.id).order_by(Run.created_at.desc()).first()
+        if last_run:
+            model_data.append({
+                'model': model,
+                'last_run': last_run.created_at,
+                'last_run_result': last_run.result
+            })
+        else:
+            model_data.append({
+                'model': model,
+                'last_run': None,
+                'last_run_result': None
+            })
+
+    return render_template('model_list.html', model_data=model_data)
+
+
+
+@main.route('/models/new', methods=['GET', 'POST'])
+def model_create():
+    if request.method == 'POST':
+        name = request.form['name']
+        description = request.form['description']
+
+        new_model = Model(name=name, description=description)
+        db.session.add(new_model)
+        db.session.commit()
+
+        session['model_id'] = new_model.id
+        return redirect(url_for('main.upload_template_image'))
+
+    return render_template('model_create.html')
+
+
+@main.route('/models/upload_template_image', methods=['GET', 'POST'])
+def upload_template_image():
+    model_id = session.get('model_id')
+    if not model_id:
+        return redirect(url_for('main.model_create'))
+
+    if request.method == 'POST' and 'template_image' in request.files:
+        filename = images.save(request.files['template_image'])
+        file_url = images.url(filename)
+        model = Model.query.get(model_id)
+        model.template_image_url = file_url
+        db.session.commit()
+
+        return redirect(url_for('main.upload_good_images'))
+
+    return render_template('model_template_image.html')
+
+
+@main.route('/models/upload_good_images', methods=['GET', 'POST'])
+def upload_good_images():
+    model_id = session.get('model_id')
+    if not model_id:
+        return redirect(url_for('main.model_create'))
+
+    if request.method == 'POST':
+        for i in range(1, 6):
+            if f'good_image_{i}' in request.files:
+                filename = images.save(request.files[f'good_image_{i}'])
+                file_url = images.url(filename)
+                model = Model.query.get(model_id)
+                setattr(model, f'good_image_{i}_url', file_url)
+        db.session.commit()
+
+        return redirect(url_for('main.draw_regions'))
+
+    return render_template('model_good_images.html')
+
+
+@main.route('/models/upload_region_images', methods=['POST'])
+def upload_region_images():
+    model_id = session.get('model_id')
+    if not model_id:
+        return redirect(url_for('main.model_create'))
+
+    x1 = request.form['x1']
+    y1 = request.form['y1']
+    x2 = request.form['x2']
+    y2 = request.form['y2']
+    region_name = request.form['region_name']  # Get the region name
+
+    bad_images = []
+    for i in range(1, 6):
+        if f'bad_image_{i}' in request.files:
+            filename = images.save(request.files[f'bad_image_{i}'])
+            file_url = images.url(filename)
+            bad_images.append(file_url)
+
+    # Create new region with name
+    new_region = ModelRegion(model_id=model_id, x1=x1, y1=y1, x2=x2, y2=y2, name=region_name)
+    for i, img_url in enumerate(bad_images, 1):
+        setattr(new_region, f'bad_image_{i}_url', img_url)
+    db.session.add(new_region)
+    db.session.commit()
+
+    return redirect(url_for('main.draw_regions'))
+
+
+@main.route('/models/draw_regions', methods=['GET', 'POST'])
+def draw_regions():
+    model_id = session.get('model_id')
+    if not model_id:
+        return redirect(url_for('main.model_create'))
+
+    model = Model.query.get(model_id)
+    return render_template('model_regions.html', model=model)
+
+
+@main.route('/regions/<int:region_id>/bad_images', methods=['GET'])
+def get_region_bad_images(region_id):
+    region = ModelRegion.query.get_or_404(region_id)
+    bad_images = {
+        'bad_image_1_url': region.bad_image_1_url,
+        'bad_image_2_url': region.bad_image_2_url,
+        'bad_image_3_url': region.bad_image_3_url,
+        'bad_image_4_url': region.bad_image_4_url,
+        'bad_image_5_url': region.bad_image_5_url
+    }
+    return bad_images
+
+
+@main.route('/models/finish_regions', methods=['GET', 'POST'])
+def finish_regions():
+    model_id = session.get('model_id')
+    if not model_id:
+        return redirect(url_for('main.model_create'))
+
+    model = Model.query.get(model_id)
+    model.status = 'ready'
+    db.session.commit()
+
+    session.pop('model_id', None)
+    return redirect(url_for('main.model_detail', model_id=model_id))
+
+
+@main.route('/models/<int:model_id>')
+def model_detail(model_id):
+    model = Model.query.get_or_404(model_id)
+
+    # If the model is still being set up, determine which step to send the user to
+    if model.status == 'setup':
+        if not model.template_image_url:
+            return redirect(url_for('main.upload_template_image', model_id=model_id))
+        elif not all([model.good_image_1_url, model.good_image_2_url, model.good_image_3_url, model.good_image_4_url, model.good_image_5_url]):
+            return redirect(url_for('main.upload_good_images', model_id=model_id))
+        else:
+            return redirect(url_for('main.draw_regions', model_id=model_id))
+
+    # If the model is ready or running, show the model detail page
+    return render_template('model_detail.html', model=model)
+
+
+@main.route('/models/<int:model_id>/delete', methods=['POST'])
+def delete_model(model_id):
+    model = Model.query.get_or_404(model_id)
+
+    # Remove all related regions for this model
+    ModelRegion.query.filter_by(model_id=model_id).delete()
+
+    # Delete the model
+    db.session.delete(model)
+    db.session.commit()
+
+    return redirect(url_for('main.model_list'))
+
+
+@main.route('/models/<int:model_id>/run', methods=['POST'])
+def run_model(model_id):
+    model = Model.query.get_or_404(model_id)
+    model.status = 'running'
+    db.session.commit()
+
+    s3_path = request.form['s3_path']
+    new_run = Run(model_id=model.id, s3_path=s3_path)
+    db.session.add(new_run)
+    db.session.commit()
+
+    # Simulate S3 image processing
+    for i in range(10):  # Mock 10 images for the run
+        image_url = f"https://mocked-s3-url.com/image_{i}.jpg"
+        pass_fail, reason = run_inspection(image_url)
+        inspection = Inspection(run_id=new_run.id, image_url=image_url, pass_fail=pass_fail, reason=reason)
+        db.session.add(inspection)
+
+    db.session.commit()
+
+    model.status = 'ready'
+    db.session.commit()
+
+    return redirect(url_for('main.run_detail', run_id=new_run.id))
+
+
+@main.route('/runs/<int:run_id>')
+def run_detail(run_id):
+    run = Run.query.get_or_404(run_id)
+    inspections = Inspection.query.filter_by(run_id=run_id).all()
+    return render_template('run_detail.html', run=run, inspections=inspections)
+
+
+@main.route('/runs')
+def run_list():
+    runs = Run.query.all()
+    return render_template('run_list.html', runs=runs)
+
+
+##################################
+### File: app/static/styles.css
+##################################
+h3 {
+    font-weight:700 !important;
+}
+
+##################################
+### File: app/templates/base.html
+##################################
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspection App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('main.model_list') }}"><img src="{{ url_for('static', filename='logo.png') }}" style="max-width:120px;"> </a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto" style="font-size:20px;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.model_list') }}">Models</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.run_list') }}">Runs</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+##################################
+### File: app/templates/model_list.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Models</h1>
+    <a href="{{ url_for('main.model_create') }}" class="btn btn-primary">Create New Model</a>
+</div>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Last Run</th>
+            <th>Last Run Result</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in model_data %}
+        <tr>
+            <td><strong>{{ entry.model.name }}</strong></td>
+            <td>{{ entry.model.description }}</td>
+            <td>
+                {% if entry.model.status == 'ready' %}
+                    <span class="badge bg-success">Ready</span>
+                {% elif entry.model.status == 'setup' %}
+                    <span class="badge bg-secondary">Setup</span>
+                {% elif entry.model.status == 'running' %}
+                    <span class="badge bg-warning text-dark">Running</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if entry.last_run %}
+                    {{ entry.last_run.strftime('%Y-%m-%d %H:%M:%S') }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                {% if entry.last_run_result %}
+                    {{ entry.last_run_result }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('main.model_detail', model_id=entry.model.id) }}" class="btn btn-primary">View</a>
+                <form action="{{ url_for('main.delete_model', model_id=entry.model.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this model?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+##################################
+### File: app/templates/model_detail.html
+##################################
+{% extends 'base.html' %}
+
+{% block styles %}
+    <style>
+        /* Optional styling if needed */
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2>Model: {{ model.name }}</h2>
+        <p><strong>Status:</strong>
+            {% if model.status == 'ready' %}
+                <span class="badge bg-success">Ready</span>
+            {% elif model.status == 'setup' %}
+                <span class="badge bg-secondary">Setup</span>
+            {% elif model.status == 'running' %}
+                <span class="badge bg-warning text-dark">Running</span>
+            {% endif %}
+        </p>
+    </div>
+    <div class="d-flex flex-column">
+        <a href="#" class="btn btn-primary mb-2">Test on Image</a>
+        <a href="{{ url_for('main.run_model', model_id=model.id) }}" class="btn btn-primary">Run on S3</a>
+    </div>
+</div>
+
+{% if model.status == 'setup' %}
+    <p>The model setup is incomplete. You can continue setting up the model below:</p>
+    <a href="{{ url_for('main.upload_template_image') }}" class="btn btn-warning">Continue Setup</a>
+{% else %}
+    <p><strong>Description: </strong>{{ model.description }}</p>
+
+    <!-- Uploaded Images Section -->
+    <div class="p-3 rounded mb-3" style="text-align:center;">
+        <h3 style="text-align:center;">Template Image</h3>
+        <img src="{{ model.template_image_url }}" class="img-thumbnail" alt="Template Image"
+             style="width: 500px;"><br><br>
+    </div>
+
+    <!-- Good Images Section -->
+    <div class="bg-light p-3 rounded mb-3" style="text-align:center;">
+        <h3 style="text-align:center;">Good Images</h3>
+        {% for i in range(1, 6) %}
+            <img src="{{ getattr(model, 'good_image_' ~ i ~ '_url') }}" class="img-thumbnail"
+                 alt="Good Image {{ i }}" style="width: 150px;">
+        {% endfor %}
+    </div>
+
+    <!-- Regions Section -->
+    <div class="bg-light p-3 rounded mb-3" style="text-align:center;">
+        <h3 style="text-align:center;">Regions</h3>
+        {% for region in model.regions %}
+            <h4>{{ region.name }}</h4>
+            <p>Coordinates: ({{ region.x1 }}, {{ region.y1 }}) to ({{ region.x2 }}, {{ region.y2 }})</p>
+            <div class="mt-2" style="text-align:center;">
+                <h5>Bad Images</h5>
+                {% for i in range(1, 6) %}
+                    <img src="{{ getattr(region, 'bad_image_' ~ i ~ '_url') }}" class="img-thumbnail"
+                         alt="Bad Image {{ i }}" style="width: 150px;">
+                {% endfor %}
+            </div>
+            <br/>
+            <br/>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
+
+
+##################################
+### File: app/templates/model_good_images.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Step 3/4: Upload Good Images</h2>
+<form method="POST" action="{{ url_for('main.upload_good_images') }}" enctype="multipart/form-data">
+    {% for i in range(1, 6) %}
+        <div class="mb-3">
+            <label for="good_image_{{ i }}" class="form-label">Choose Good Image {{ i }}</label>
+            <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})">
+            <img id="imagePreview_{{ i }}" style="max-width: 300px; margin-top: 20px;">
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Next</button>
+</form>
+
+<script>
+    function previewImage(event, index) {
+        const image = document.getElementById('imagePreview_' + index);
+        image.src = URL.createObjectURL(event.target.files[0]);
+        image.style.display = 'block';
+    }
+</script>
+{% endblock %}
+
+
+##################################
+### File: app/templates/run_list.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Runs</h1>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Run ID</th>
+            <th>Model Name</th>
+            <th>S3 Path</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for run in runs %}
+        <tr>
+            <td>{{ run.id }}</td>
+            <td>{{ run.model.name }}</td>
+            <td>{{ run.s3_path }}</td>
+            <td>{{ run.result }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+##################################
+### File: app/templates/model_create.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Step 1/4: Create Model</h2>
+<form method="POST" action="{{ url_for('main.model_create') }}">
+    <div class="mb-3">
+        <label for="name" class="form-label">Model Name</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="description" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Model</button>
+</form>
+{% endblock %}
+
+
+##################################
+### File: app/templates/model_template_image.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Step 2/4: Upload Template Image</h2>
+<form method="POST" action="{{ url_for('main.upload_template_image') }}" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="template_image" class="form-label">Choose Template Image</label>
+        <input type="file" id="template_image" name="template_image" class="form-control" accept="image/*" onchange="previewImage(event)" required>
+        <img id="imagePreview" style="max-width: 300px; margin-top: 20px;">
+    </div>
+    <button type="submit" class="btn btn-primary">Next</button>
+</form>
+
+<script>
+    function previewImage(event) {
+        const image = document.getElementById('imagePreview');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        image.style.display = 'block';
+    }
+</script>
+{% endblock %}
+
+
+##################################
+### File: app/templates/model_regions.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Step 4/4: Define Bad Regions</h2>
+<p>Draw regions on the template image, name them, and upload bad images for each region.</p>
+
+<div class="row">
+    <!-- Sidebar for region names and uploading bad images -->
+    <div class="col-md-4">
+        <!-- Show list of regions added -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h4>Regions</h4>
+            <button id="addRegionBtn" class="btn btn-primary" onclick="addNewRegion()">Add Region</button>
+        </div>
+
+        <ul id="regionList" class="list-group mb-3">
+            {% for region in model.regions %}
+            <li class="list-group-item" data-region-id="{{ region.id }}" onclick="selectRegion({{ region.id }}, {{ region.x1 }}, {{ region.y1 }}, {{ region.x2 }}, {{ region.y2 }})">
+                {{ region.name }} ({{ region.x1 }}, {{ region.y1 }} - {{ region.x2 }}, {{ region.y2 }})
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Instructions to draw a region -->
+        <p id="drawInstruction" style="display:none; color:blue;">Draw region on the image.</p>
+
+        <!-- Form to name the region and upload bad images -->
+        <form id="regionForm" method="POST" action="{{ url_for('main.upload_region_images') }}" enctype="multipart/form-data" style="display:none;">
+            <input type="hidden" name="x1" id="x1">
+            <input type="hidden" name="y1" id="y1">
+            <input type="hidden" name="x2" id="x2">
+            <input type="hidden" name="y2" id="y2">
+            <h4>New Region Name</h4>
+            <div class="mb-3">
+                <input type="text" id="region_name" name="region_name" class="form-control" required>
+            </div>
+            <h4>Upload Bad Images for the Region:</h4>
+            {% for i in range(1, 6) %}
+            <div class="mb-3">
+                <label for="bad_image_{{ i }}" class="form-label">Upload Bad Image {{ i }}</label>
+                <input type="file" id="bad_image_{{ i }}" name="bad_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})">
+                <img id="badImagePreview_{{ i }}" style="max-width: 100px; margin-top: 10px; display:none;">
+            </div>
+            {% endfor %}
+            <div id="error-message" style="color: red; display: none;">Please upload all 5 bad images.</div>
+            <button type="submit" class="btn btn-primary">Save Region</button>
+            <button type="button" class="btn btn-danger" id="resetRegion">Reset Region</button>
+        </form>
+
+        <!-- Button to save all model regions -->
+        <form method="POST" action="{{ url_for('main.finish_regions') }}">
+            <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;">Save Model Regions</button>
+        </form>
+    </div>
+
+    <!-- Canvas for drawing the regions -->
+    <div class="col-md-8">
+        <img id="templateImage" src="{{ model.template_image_url }}" alt="Template Image" class="img-fluid mb-3" style="display:none;">
+        <canvas id="templateCanvas" class="border"></canvas>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('templateCanvas');
+    const ctx = canvas.getContext('2d');
+    let startX, startY, isDrawing = false;
+    let regions = [];
+    let currentRegion = null;
+
+    const templateImage = document.getElementById('templateImage');
+    const regionForm = document.getElementById('regionForm');
+    const regionList = document.getElementById('regionList');
+    const addRegionBtn = document.getElementById('addRegionBtn');
+    const drawInstruction = document.getElementById('drawInstruction');
+
+    // Initially disable drawing
+    let drawingEnabled = false;
+    let selectedRegionId = null;
+
+    // Draw the template image on the canvas
+    templateImage.onload = function() {
+        canvas.width = templateImage.width;
+        canvas.height = templateImage.height;
+        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+        templateImage.style.display = 'none'; // hide the actual image element
+    };
+
+    templateImage.src = templateImage.src; // Trigger the image load
+
+    // Drawing functionality
+    canvas.addEventListener('mousedown', (e) => {
+        if (!drawingEnabled) return; // Only draw after clicking "Add Region"
+        isDrawing = true;
+        [startX, startY] = [e.offsetX, e.offsetY];
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+        ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY);
+    });
+
+    canvas.addEventListener('mouseup', (e) => {
+        if (!drawingEnabled) return;
+        isDrawing = false;
+        document.getElementById('x1').value = startX;
+        document.getElementById('y1').value = startY;
+        document.getElementById('x2').value = e.offsetX;
+        document.getElementById('y2').value = e.offsetY;
+        regionForm.style.display = 'block';
+        drawInstruction.style.display = 'none'; // Hide "Draw region" message
+        regions.push({x1: startX, y1: startY, x2: e.offsetX, y2: e.offsetY});
+        drawingEnabled = false;
+        addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
+    });
+
+    // Draw a single region
+    function drawRegion(x1, y1, x2, y2, highlight=false) {
+        if (highlight) {
+            ctx.strokeStyle = 'red';
+        } else {
+            ctx.strokeStyle = 'black';
+        }
+        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+    }
+
+    // Add new region
+    function addNewRegion() {
+        regionForm.reset();
+        regionForm.style.display = 'none'; // Hide the form initially
+        drawInstruction.style.display = 'block'; // Show "Draw region on the image"
+        addRegionBtn.style.display = 'none'; // Hide "Add Region" button
+        drawingEnabled = true;
+        // Clear selection in the sidebar
+        document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+    }
+
+    // Reset button logic
+    document.getElementById('resetRegion').addEventListener('click', function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+        regionForm.reset();
+        document.getElementById('x1').value = '';
+        document.getElementById('y1').value = '';
+        document.getElementById('x2').value = '';
+        document.getElementById('y2').value = '';
+        addRegionBtn.style.display = 'block'; // Show "Add Region" button again
+        regionForm.style.display = 'none'; // Hide the form
+        drawInstruction.style.display = 'none'; // Hide "Draw region" message
+        drawingEnabled = false;
+        selectedRegionId = null;
+    });
+
+    // Validate if all bad images are selected
+    document.getElementById('regionForm').addEventListener('submit', function(e) {
+        const badImages = Array.from(document.querySelectorAll('input[type="file"]'));
+        const allImagesUploaded = badImages.every(input => input.files.length > 0);
+
+        if (!allImagesUploaded) {
+            e.preventDefault();
+            document.getElementById('error-message').style.display = 'block';
+        } else {
+            document.getElementById('error-message').style.display = 'none';
+        }
+    });
+
+    // Preview image on file input change
+    function previewImage(event, index) {
+        const image = document.getElementById('badImagePreview_' + index);
+        image.src = URL.createObjectURL(event.target.files[0]);
+        image.style.display = 'block';
+    }
+
+    // Select a region from the sidebar
+    function selectRegion(regionId, x1, y1, x2, y2) {
+        const items = document.querySelectorAll('.list-group-item');
+        items.forEach(item => item.classList.remove('active'));
+        const selectedRegion = document.querySelector(`[data-region-id="${regionId}"]`);
+        selectedRegion.classList.add('active');
+
+        // Clear the canvas and draw all regions again
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+        drawRegion(x1, y1, x2, y2, true); // Highlight the selected region
+
+        // Set the selected region
+        selectedRegionId = regionId;
+    }
+
+    // Deselect region when clicking anywhere else on the page
+    document.addEventListener('click', function(event) {
+        const insideRegionList = event.target.closest('.list-group-item') !== null;
+        const insideCanvas = event.target.closest('#templateCanvas') !== null;
+
+        if (!insideRegionList && !insideCanvas) {
+            // Clear selected region if clicked outside
+            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+            selectedRegionId = null;
+
+            // Redraw the canvas without highlighted regions
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2));
+        }
+    });
+</script>
+{% endblock %}
+
+
+##################################
+### File: app/templates/run_detail.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Run Details</h2>
+<p>Model: {{ run.model.name }}</p>
+<p>S3 Path: {{ run.s3_path }}</p>
+<h3>Inspection Results</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Result</th>
+            <th>Reason</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inspection in inspections %}
+        <tr>
+            <td><img src="{{ inspection.image_url }}" alt="Inspection Image" style="width: 100px;"></td>
+            <td>{{ 'PASS' if inspection.pass_fail else 'FAIL' }}</td>
+            <td>{{ inspection.reason }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+

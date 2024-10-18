@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 3/3: Define Bad Regions</h2>
+<h2>Step 4/4: Define Bad Regions</h2>
 <p>Draw regions on the template image, name them, and upload bad images for each region.</p>
 
 <div class="row">
@@ -75,6 +75,7 @@
 
     // Initially disable drawing
     let drawingEnabled = false;
+    let selectedRegionId = null;
 
     // Draw the template image on the canvas
     templateImage.onload = function() {
@@ -116,7 +117,12 @@
     });
 
     // Draw a single region
-    function drawRegion(x1, y1, x2, y2) {
+    function drawRegion(x1, y1, x2, y2, highlight=false) {
+        if (highlight) {
+            ctx.strokeStyle = 'red';
+        } else {
+            ctx.strokeStyle = 'black';
+        }
         ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
     }
 
@@ -145,6 +151,7 @@
         regionForm.style.display = 'none'; // Hide the form
         drawInstruction.style.display = 'none'; // Hide "Draw region" message
         drawingEnabled = false;
+        selectedRegionId = null;
     });
 
     // Validate if all bad images are selected
@@ -173,6 +180,32 @@
         items.forEach(item => item.classList.remove('active'));
         const selectedRegion = document.querySelector(`[data-region-id="${regionId}"]`);
         selectedRegion.classList.add('active');
+
+        // Clear the canvas and draw all regions again
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+        regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
+        drawRegion(x1, y1, x2, y2, true); // Highlight the selected region
+
+        // Set the selected region
+        selectedRegionId = regionId;
     }
+
+    // Deselect region when clicking anywhere else on the page
+    document.addEventListener('click', function(event) {
+        const insideRegionList = event.target.closest('.list-group-item') !== null;
+        const insideCanvas = event.target.closest('#templateCanvas') !== null;
+
+        if (!insideRegionList && !insideCanvas) {
+            // Clear selected region if clicked outside
+            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+            selectedRegionId = null;
+
+            // Redraw the canvas without highlighted regions
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2));
+        }
+    });
 </script>
 {% endblock %}

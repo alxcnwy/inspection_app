@@ -20,6 +20,8 @@ class Model(db.Model):
     runs = db.relationship('Run', backref='model', lazy=True)
 
 
+
+
 class ModelRegion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     model_id = db.Column(db.Integer, db.ForeignKey('model.id'), nullable=False)

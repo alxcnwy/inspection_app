@@ -4,11 +4,86 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34751e43-ccd7-43aa-97ec-06351e85d4e5" name="Changes" comment="" />
+    <list default="true" id="34751e43-ccd7-43aa-97ec-06351e85d4e5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69504832.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69504832_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69504832_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69506170.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69507780.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69507921.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69507921_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69515661.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69515661_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69515661_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69518801.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69518801_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69518801_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69519600.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69519600_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69525385.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69525587.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69525587_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69526808.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69526808_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69526808_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69527447.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69527447_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69527447_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69528139.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69528139_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69528139_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69528139_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69532634.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69532634_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69534286_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69541897_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69546267.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69546267_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69546267_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69546267_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69556840.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69556840_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69556840_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69556840_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69561292.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69561292_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69567194.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69567194_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69567194_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69567194_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69567194_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/ImageID-69572597.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/template.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/template_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/template_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/uploads/template_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/model_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/model_good_images.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_good_images.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/model_regions.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_regions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/model_template_image.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_template_image.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -67,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729159795776</updated>
-      <workItem from="1729159798814" duration="7281000" />
+      <workItem from="1729159798814" duration="11729000" />
     </task>
     <servers />
   </component>
