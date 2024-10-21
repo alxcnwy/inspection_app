@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
 
 from .align import align_and_crop_regions, crop_regions
+from .bedrock import train_bedrock
 from .models import db, Model, ModelRegion, Run, Inspection
 from . import images
 import boto3
@@ -287,7 +288,7 @@ def finish_model(model_id):
                     bad_img_urls.append(cropped_bad_image)
 
         # Run bedrock training
-        # train_bedrock(good_img_urls, bad_img_urls, region.fail_description, region.pass_description)
+        train_bedrock(good_img_urls, bad_img_urls, region)
 
     model.status = 'ready'
     db.session.commit()

@@ -5,10 +5,11 @@
     {% if all_images_aligned %}
         <h2>Step 5/5: Train Model</h2>
         <p>All images aligned. Model is ready to train - will take approximately 1 minute, do not close the page!</p>
-        <form method="POST" action="{{ url_for('main.finish_model', model_id=model.id) }}">
-            <button type="submit" class="btn btn-success">Train Model</button>
+        <form method="POST" action="{{ url_for('main.finish_model', model_id=model.id) }}" id="trainModelForm">
+            <button type="submit" class="btn btn-success" id="trainModelButton">
+                Train Model
+            </button>
         </form>
-
     {% else %}
         <h2>Step 5/5: Review Images</h2>
         <p style="text-align:center; color:red;">Not all images could align onto the template - please upload new
@@ -62,4 +63,16 @@
             <button type="submit" class="btn btn-primary">Upload Replacement Images</button>
         </form>
     {% endif %}
+
+    <script>
+        document.getElementById('trainModelForm').addEventListener('submit', function () {
+            const trainButton = document.getElementById('trainModelButton');
+            trainButton.disabled = true;
+            trainButton.innerHTML = `
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Please wait...
+            `;
+        });
+    </script>
+
 {% endblock %}

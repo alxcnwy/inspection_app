@@ -12,13 +12,17 @@
         align.py
         models.py
         __init__.py
+        bedrock.py
         routes.py
         static/
             .DS_Store
             styles.css
             logo.png
             uploads/
+                ImageID-69532634_4_aligned_crop_12_1729516200.jpg
+                ImageID-69507921_13_aligned_crop_12_1729515891.jpg
                 ImageID-69556840_2.jpg
+                ImageID-69518801_2_aligned_crop_12_1729516859.jpg
                 ImageID-69539780_1_1_15.jpg
                 ImageID-69507921_4_aligned.jpg
                 ImageID-70014907.jpg
@@ -31,14 +35,18 @@
                 ImageID-69556840_3.jpg
                 ImageID-69527447.jpg
                 ImageID-69556840_1.jpg
+                ImageID-69528139_6_aligned_crop_12_1729516204.jpg
                 ImageID-69528139_6_aligned.jpg
+                ImageID-69572922_1_aligned_crop_12_1729515889.jpg
                 ImageID-69526808.jpg
+                ImageID-69507921_13_aligned_crop_12_1729516593.jpg
                 ImageID-69541897_8.jpg
                 ImageID-69611658_aligned.jpg
                 ImageID-69526808_2_aligned.jpg
                 ImageID-69578836_aligned.jpg
                 ImageID-69507780_3_aligned.jpg
                 ImageID-69507780.jpg
+                ImageID-69561292_7_aligned_crop_12_1729515892.jpg
                 ImageID-69539780_1_1_8.jpg
                 ImageID-69696964.jpg
                 ImageID-69556840_4.jpg
@@ -48,36 +56,52 @@
                 .DS_Store
                 ImageID-69572922_1_aligned.jpg
                 ImageID-69541897.jpg
+                ImageID-69507921_10_aligned_crop_12_1729516562.jpg
                 ImageID-69534286_8.jpg
                 ImageID-69539780_1_1_12.jpg
+                ImageID-69528139_6_aligned_crop_12_1729516566.jpg
+                ImageID-69507921_10_aligned_crop_12_1729516589.jpg
                 ImageID-69507921_10_aligned.jpg
                 ImageID-69556840_5.jpg
                 ImageID-69539780_1_1_9.jpg
+                ImageID-69507921_10_aligned_crop_12_1729516199.jpg
                 ImageID-69539780_aligned.jpg
                 ImageID-69525587_3_aligned.jpg
                 ImageID-69556840_7.jpg
                 ImageID-69616854_9.jpg
                 ImageID-70014651.jpg
+                ImageID-69572922_1_aligned_crop_12_1729516202.jpg
+                ImageID-69572922_1_aligned_crop_12_1729516564.jpg
                 ImageID-69539780_1_1_10.jpg
+                ImageID-69556840_8_aligned_crop_12_1729516858.jpg
+                ImageID-69561292_6_aligned_crop_12_1729516858.jpg
+                ImageID-69561292_7_aligned_crop_12_1729516594.jpg
                 ImageID-69525385_aligned.jpg
                 ImageID-69640765_1.jpg
                 ImageID-69539780_1_1_11.jpg
                 ImageID-69572922_1.jpg
                 ImageID-69616854_8.jpg
                 ImageID-69556840_6.jpg
+                ImageID-69532634_4_aligned_crop_12_1729516562.jpg
+                ImageID-69507921_10_aligned_crop_12_1729516857.jpg
                 ImageID-69539780_1.jpg
                 ImageID-69561292_5.jpg
+                ImageID-69507921_13_aligned_crop_12_1729516860.jpg
+                ImageID-69556840_8_aligned_crop_12_1729516590.jpg
                 ImageID-69616854_13.jpg
                 ImageID-70014549_1.jpg
                 ImageID-69633161_aligned.jpg
+                ImageID-69561292_6_aligned_crop_12_1729516591.jpg
                 ImageID-69546267_2.jpg
                 ImageID-69506170.jpg
+                ImageID-69532634_4_aligned_crop_12_1729516673.jpg
                 template_8.jpg
                 input_7.jpg
                 ImageID-69525587_7.jpg
                 ImageID-69541897_aligned.jpg
                 ImageID-69572597_5.jpg
                 ImageID-69525385.jpg
+                ImageID-69572922_1_aligned_crop_12_1729516675.jpg
                 ImageID-70014651_1.jpg
                 ImageID-70101246_aligned.jpg
                 ImageID-69515661_aligned.jpg
@@ -97,14 +121,18 @@
                 ImageID-69561292_4.jpg
                 ImageID-69995179.jpg
                 ImageID-69539780_2.jpg
+                ImageID-69528139_6_aligned_crop_12_1729516677.jpg
                 ImageID-69561292_6.jpg
                 ImageID-69507921_13_aligned.jpg
+                ImageID-69507921_10_aligned_crop_12_1729516673.jpg
                 ImageID-69616854_10.jpg
                 ImageID-69546267_1.jpg
                 ImageID-69518801_2_aligned.jpg
+                ImageID-69561292_7_aligned_crop_12_1729516862.jpg
                 ImageID-69561292_7_aligned.jpg
                 input_4.jpg
                 ImageID-69525587_4.jpg
+                ImageID-69532634_4_aligned_crop_12_1729516857.jpg
                 ImageID-69507780_3.jpg
                 ImageID-70014651_2.jpg
                 ImageID-69507780_2.jpg
@@ -113,6 +141,7 @@
                 input_5.jpg
                 ImageID-69696964_aligned.jpg
                 ImageID-69616854_11.jpg
+                ImageID-69561292_7_aligned_crop_12_1729516678.jpg
                 ImageID-69518801_2.jpg
                 ImageID-69561292_7.jpg
                 ImageID-69561292_3.jpg
@@ -125,6 +154,7 @@
                 ImageID-69572597_3.jpg
                 input_10.jpg
                 ImageID-69526808_1_aligned.jpg
+                ImageID-69518801_2_aligned_crop_12_1729516592.jpg
                 ImageID-69528139_5_aligned.jpg
                 ImageID-69572597_2.jpg
                 ImageID-69499858_2.jpg
@@ -153,8 +183,10 @@
                 ImageID-69561292_1.jpg
                 ImageID-69534286_4_aligned.jpg
                 ImageID-69525587.jpg
+                ImageID-69518801_2_aligned_crop_12_1729515890.jpg
                 ImageID-69519600_2.jpg
                 ImageID-69539780_1_1_11_aligned.jpg
+                ImageID-69561292_6_aligned_crop_12_1729516201.jpg
                 template_1.jpg
                 ImageID-69504832_3.jpg
                 ImageID-70081023.jpg
@@ -167,11 +199,13 @@
                 ImageID-69504832_2.jpg
                 ImageID-70032773.jpg
                 ImageID-69519600_aligned.jpg
+                ImageID-69556840_8_aligned_crop_12_1729516201.jpg
                 ImageID-69519600_3.jpg
                 ImageID-69567194_aligned.jpg
                 ImageID-69519600_1.jpg
                 template_2.jpg
                 template_13.jpg
+                ImageID-69572922_1_aligned_crop_12_1729516859.jpg
                 ImageID-69507921_11_aligned.jpg
                 ImageID-69567194.jpg
                 ImageID-69532634_1.jpg
@@ -187,6 +221,8 @@
                 ImageID-69507921_10.jpg
                 ImageID-69539780_2_aligned.jpg
                 ImageID-69507780_2_aligned.jpg
+                ImageID-69518801_2_aligned_crop_12_1729516202.jpg
+                ImageID-69518801_2_aligned_crop_12_1729516564.jpg
                 ImageID-69561292.jpg
                 ImageID-69534286.jpg
                 ImageID-69532634_4.jpg
@@ -195,13 +231,18 @@
                 ImageID-69507921_11.jpg
                 input_9.jpg
                 template_6.jpg
+                ImageID-69528139_6_aligned_crop_12_1729516861.jpg
                 ImageID-69539780_1_1_8_aligned.jpg
                 ImageID-69519600_5.jpg
                 ImageID-69507921.jpg
                 ImageID-69518801.jpg
                 ImageID-71031962.jpg
+                ImageID-69556840_8_aligned_crop_12_1729516563.jpg
+                ImageID-69507921_13_aligned_crop_12_1729516677.jpg
+                ImageID-69561292_6_aligned_crop_12_1729515889.jpg
                 template_4.jpg
                 ImageID-69507921_13.jpg
+                ImageID-69556840_8_aligned_crop_12_1729515888.jpg
                 template_14.jpg
                 ImageID-69507780_aligned.jpg
                 ImageID-70032773_1.jpg
@@ -210,14 +251,17 @@
                 ImageID-69574312.jpg
                 template_5.jpg
                 ImageID-69525587_7_aligned.jpg
+                ImageID-69561292_6_aligned_crop_12_1729516563.jpg
                 ImageID-69507921_5_aligned.jpg
                 ImageID-69539780_1_1_7.jpg
                 ImageID-69578836.jpg
+                ImageID-69532634_4_aligned_crop_12_1729516590.jpg
                 ImageID-69539780_1_2.jpg
                 ImageID-69525587_4_aligned.jpg
                 ImageID-69528139_5.jpg
                 ImageID-69616854_5.jpg
                 ImageID-69567194_1_aligned.jpg
+                ImageID-69507921_10_aligned_crop_12_1729515887.jpg
                 input.jpg
                 ImageID-69534286_6.jpg
                 ImageID-69519600.jpg
@@ -225,8 +269,10 @@
                 ImageID-69541897_3.jpg
                 ImageID-69525385_2.jpg
                 ImageID-69525385_3.jpg
+                ImageID-69507921_13_aligned_crop_12_1729516566.jpg
                 ImageID-70096298.jpg
                 ImageID-69541897_2.jpg
+                ImageID-69561292_7_aligned_crop_12_1729516567.jpg
                 ImageID-69526808_3.jpg
                 ImageID-69572922.jpg
                 ImageID-69507921_1.jpg
@@ -247,8 +293,11 @@
                 ImageID-69532634_4_aligned.jpg
                 ImageID-69534286_5.jpg
                 ImageID-69507921_3.jpg
+                ImageID-69528139_6_aligned_crop_12_1729516594.jpg
                 ImageID-69526808_1.jpg
+                ImageID-69532634_4_aligned_crop_12_1729515887.jpg
                 ImageID-69525385_1.jpg
+                ImageID-69507921_13_aligned_crop_12_1729516203.jpg
                 ImageID-69541897_1.jpg
                 ImageID-69534286_4.jpg
                 ImageID-69507921_2.jpg
@@ -256,6 +305,7 @@
                 ImageID-69507780_1_aligned.jpg
                 ImageID-69539780_1_aligned.jpg
                 ImageID-69499858_aligned.jpg
+                ImageID-69518801_2_aligned_crop_12_1729516675.jpg
                 ImageID-70101246.jpg
                 ImageID-69616854_7.jpg
                 ImageID-70590958.jpg
@@ -267,14 +317,18 @@
                 ImageID-69527447_1.jpg
                 ImageID-69528139_3.jpg
                 ImageID-69616854_3.jpg
+                ImageID-69528139_6_aligned_crop_12_1729515891.jpg
+                ImageID-69572922_1_aligned_crop_12_1729516591.jpg
                 ImageID-69527447_aligned.jpg
                 ImageID-69507921_6.jpg
                 ImageID-69528139_1_aligned.jpg
                 ImageID-69541897_5.jpg
                 ImageID-69572597_aligned.jpg
                 ImageID-69526808_4.jpg
+                ImageID-69561292_6_aligned_crop_12_1729516674.jpg
                 ImageID-69525385_4.jpg
                 ImageID-69515661_1.jpg
+                ImageID-69556840_8_aligned_crop_12_1729516674.jpg
                 ImageID-69525385_5.jpg
                 ImageID-69526808_5.jpg
                 ImageID-69541897_4.jpg
@@ -299,6 +353,7 @@
                 ImageID-69515661_2.jpg
                 ImageID-69525385_6.jpg
                 ImageID-69526808_6.jpg
+                ImageID-69561292_7_aligned_crop_12_1729516204.jpg
                 ImageID-69541897_7.jpg
                 ImageID-69534286_2.jpg
                 ImageID-69507921_4.jpg
@@ -541,6 +596,7 @@ else:
 import os
 import cv2
 import numpy as np
+import time
 
 
 def align_and_crop_regions(input_image_path, model):
@@ -629,6 +685,74 @@ def align_and_crop_regions(input_image_path, model):
 
             return aligned_image_path
     return None
+
+
+def crop_regions(input_image_path, model, region):
+    """
+    Align the input image with the template image from the model, crop the region, save the cropped region,
+    and return the path of the cropped region image with a unique timestamp to avoid overwriting.
+    """
+    # Get the local template image path
+    template_path = model.get_template_image_path()
+
+    if not template_path:
+        raise ValueError("Template image path not found in the model.")
+
+    template = cv2.imread(template_path)
+    input_image = cv2.imread(input_image_path)
+
+    if template is None or input_image is None:
+        raise ValueError("Either template or input image could not be loaded.")
+
+    # Convert images to grayscale
+    gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+    gray_input = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
+
+    # Detect SIFT keypoints and descriptors
+    sift = cv2.SIFT_create(nfeatures=50000)
+    keypoints_template, descriptors_template = sift.detectAndCompute(gray_template, None)
+    keypoints_input, descriptors_input = sift.detectAndCompute(gray_input, None)
+
+    # Use FLANN based matcher
+    FLANN_INDEX_KDTREE = 1
+    index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
+    search_params = dict(checks=500)
+    flann = cv2.FlannBasedMatcher(index_params, search_params)
+    matches = flann.knnMatch(descriptors_template, descriptors_input, k=2)
+
+    # Apply Lowe's ratio test
+    good_matches = [m for m, n in matches if m.distance < 0.7 * n.distance]
+
+    if len(good_matches) > 10:
+        # Extract matched points
+        src_pts = np.float32([keypoints_template[m.queryIdx].pt for m in good_matches]).reshape(-1, 1, 2)
+        dst_pts = np.float32([keypoints_input[m.trainIdx].pt for m in good_matches]).reshape(-1, 1, 2)
+
+        # Compute homography
+        H, mask = cv2.findHomography(dst_pts, src_pts, cv2.RANSAC, 5.0)
+
+        # Align the input image
+        height, width, channels = template.shape
+        aligned_image = cv2.warpPerspective(input_image, H, (width, height))
+
+        # Ensure coordinates are ordered correctly for the region
+        x1, x2 = min(region.x1, region.x2), max(region.x1, region.x2)
+        y1, y2 = min(region.y1, region.y2), max(region.y1, region.y2)
+
+        # Crop the region from the aligned image
+        cropped_region = aligned_image[y1:y2, x1:x2]
+
+        # Generate a unique cropped image filename with a timestamp to avoid overwrites
+        timestamp = int(time.time())
+        cropped_image_name = f"{os.path.splitext(os.path.basename(input_image_path))[0]}_crop_{region.id}_{timestamp}.jpg"
+        cropped_image_path = os.path.join('app/static/uploads', cropped_image_name)
+
+        # Save the cropped region
+        cv2.imwrite(cropped_image_path, cropped_region)
+
+        return cropped_image_path
+    else:
+        return None
 
 
 ##################################
@@ -781,11 +905,141 @@ def create_app():
 
 
 ##################################
+### File: app/bedrock.py
+##################################
+import boto3
+import json
+import base64
+import time
+import pickle
+from datetime import datetime
+import requests
+
+def encode_image_to_base64_from_disk(image_path):
+    # Open and encode image to base64
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+
+
+
+def send_request(model_id, new_message, conversation_history, save=False, region=None):
+    start_time_request = time.time()
+    print(f"{datetime.now()} Request Start")
+
+    bedrock = boto3.client('bedrock-runtime')
+
+    # Append the new message to conversation history
+    conversation_history.append({
+        "role": "user",
+        "content": new_message
+    })
+
+    # Prepare the request body
+    body = {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 2000,
+        "messages": conversation_history
+    }
+
+    # Convert the body to JSON and encode as bytes
+    body_json = json.dumps(body).encode('utf-8')
+
+    # Make the request to Bedrock
+    response = bedrock.invoke_model(
+        modelId=model_id,
+        body=body_json,
+        contentType="application/json",
+        accept="application/json"
+    )
+
+    # Read the response body
+    response_body = response['body'].read()
+
+    # Parse the response
+    assistant_response = json.loads(response_body)
+
+    # Append the assistant's response to the conversation history
+    conversation_history.append({
+        "role": "assistant",
+        "content": assistant_response["content"]
+    })
+
+    # Save the conversation history if needed
+    if save and region:
+        filename = f"{region.id}.pkl"
+        with open(filename, 'wb') as f:
+            pickle.dump(conversation_history, f)
+
+    # Print total request time
+    end_time_request = time.time()
+    total_time = end_time_request - start_time_request
+    print(f"{datetime.now()} Request End: {total_time:.2f} seconds")
+
+    return assistant_response
+
+
+def train_bedrock(good_img_urls, bad_img_urls, region):
+    # Initialize conversation history
+    conversation_history = []
+    model_id = "anthropic.claude-3-5-sonnet-20240620-v1:0"
+
+    # Process fail images
+    fail_images_content = []
+    for image_path in bad_img_urls:
+        encoded_image = encode_image_to_base64_from_disk(image_path)  # Fetch from disk
+        fail_images_content.append({
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": "image/jpeg",
+                "data": encoded_image
+            }
+        })
+
+    # Add fail image description
+    fail_images_content.append({
+        "type": "text",
+        "text": f"Your job is to examine examples of incorrect and correct images and learn how to tell if a new image is incorrect or correct. Here are 5 'incorrect' images. {region.fail_description} Provide descriptions for these images and end each description with the word 'incorrect'."
+    })
+
+    # Send fail images to Bedrock
+    fail_response = send_request(model_id, fail_images_content, conversation_history)
+    print(f"{datetime.now()} Response for 5 fail images:")
+    print(fail_response)
+
+    # Process pass images
+    pass_images_content = []
+    for image_path in good_img_urls:
+        encoded_image = encode_image_to_base64_from_disk(image_path)  # Fetch from disk
+        pass_images_content.append({
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": "image/jpeg",
+                "data": encoded_image
+            }
+        })
+
+    # Add pass image description
+    pass_images_content.append({
+        "type": "text",
+        "text": f"Here are 5 'correct' images. {region.pass_description} Provide descriptions for these images and end each description with the word 'correct'."
+    })
+
+    # Send pass images to Bedrock
+    pass_response = send_request(model_id, pass_images_content, conversation_history, save=True, region=region)
+    print(f"{datetime.now()} Response for 5 pass images:")
+    print(pass_response)
+
+
+
+##################################
 ### File: app/routes.py
 ##################################
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
 
-from .align import align_and_crop_regions
+from .align import align_and_crop_regions, crop_regions
+from .bedrock import train_bedrock
 from .models import db, Model, ModelRegion, Run, Inspection
 from . import images
 import boto3
@@ -1043,22 +1297,42 @@ def review_images(model_id):
 
 @main.route('/models/finish/<int:model_id>', methods=['POST'])
 def finish_model(model_id):
-    # Logic for finishing the model setup
     model = Model.query.get_or_404(model_id)
 
-    # todo:
-    # for each region:
-    #     align all 5 good and 5 bad images then crop the zoomed region and save as image and save path on model object
-    #     run train_bedrock(good_img_urls, bad_img_urls, fail_desc, pass_desc) where good_img_urls and bad_img_urls are the urls of the cropped aligned regions
+    # For each region, align good and bad images, crop regions, and save URLs
+    for region in model.regions:
+        good_img_urls = []
+        bad_img_urls = []
+        output_dir = current_app.config['UPLOADED_IMAGES_DEST']
 
+        # Align and crop good images
+        for i in range(1, 6):
+            good_image_filename = getattr(model, f'good_image_{i}_aligned_filename')
+            if good_image_filename:
+                good_image_path = os.path.join(output_dir, good_image_filename)
+                cropped_good_image = crop_regions(good_image_path, model, region)
+                if cropped_good_image:
+                    setattr(region, f'good_image_{i}_crop', os.path.basename(cropped_good_image))
+                    good_img_urls.append(cropped_good_image)
 
+        # Align and crop bad images
+        for i in range(1, 6):
+            bad_image_filename = getattr(region, f'bad_image_{i}_aligned_filename')
+            if bad_image_filename:
+                bad_image_path = os.path.join(output_dir, bad_image_filename)
+                cropped_bad_image = crop_regions(bad_image_path, model, region)
+                if cropped_bad_image:
+                    setattr(region, f'bad_image_{i}_crop', os.path.basename(cropped_bad_image))
+                    bad_img_urls.append(cropped_bad_image)
 
+        # Run bedrock training
+        train_bedrock(good_img_urls, bad_img_urls, region)
 
-    # Mark the model as 'ready'
     model.status = 'ready'
     db.session.commit()
 
     return redirect(url_for('main.model_list'))
+
 
 
 @main.route('/models/<int:model_id>')
