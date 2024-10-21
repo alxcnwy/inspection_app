@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34751e43-ccd7-43aa-97ec-06351e85d4e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/bedrock.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/inspect.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/inspection_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/model_review_images.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_review_images.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/model_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/3a14f7e1719b_update_modelregion_to_store_filenames_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/5885024a7628_init.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/94493853f28b_update.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/c39d2d10c246_add_descriptions.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729159795776</updated>
       <workItem from="1729159798814" duration="11729000" />
-      <workItem from="1729512345705" duration="4913000" />
+      <workItem from="1729512345705" duration="8806000" />
     </task>
     <servers />
   </component>
@@ -89,13 +95,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/routes.py</url>
-          <line>215</line>
+          <line>255</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/routes.py</url>
-          <line>227</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Test on Image for Model: {{ model.name }}</h2>
+<p>Upload an image to test it against the model: {{ model.name }}</p>
+<form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="image" class="form-label">Choose an Image</label>
+        <input type="file" id="image" name="image" class="form-control" accept="image/*" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Run Inspection</button>
+</form>
+{% endblock %}

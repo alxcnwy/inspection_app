@@ -20,6 +20,46 @@ def run_inspection(image):
     return pass_fail, reason
 
 
+@main.route('/models/<int:model_id>/inspect', methods=['GET', 'POST'])
+def inspect(model_id):
+    model = Model.query.get_or_404(model_id)
+
+    if request.method == 'POST':
+        image = request.files['image']  # Get the uploaded image
+        if image:
+            # Save the uploaded image to the uploads folder
+            filename = images.save(image)
+            image_path = url_for('static', filename=f'uploads/{filename}')
+
+            # Mock running inspection
+            pass_fail, reason = run_inspection(image_path)
+
+            # Create new Inspection instance and link it to the model
+            new_inspection = Inspection(
+                run_id=None,  # Assuming there is no run associated yet
+                model_id=model.id,  # Link to the model
+                image_url=image_path,
+                pass_fail=pass_fail,
+                reason=reason
+            )
+            db.session.add(new_inspection)
+            db.session.commit()
+
+            # Redirect to the result page with the inspection ID
+            return redirect(url_for('main.inspection_result', inspection_id=new_inspection.id))
+
+    return render_template('inspect.html', model=model)
+
+
+
+@main.route('/inspection_result/<int:inspection_id>')
+def inspection_result(inspection_id):
+    # Retrieve the inspection data from the database using the inspection_id
+    inspection = Inspection.query.get_or_404(inspection_id)
+
+    return render_template('inspection_result.html', inspection=inspection)
+
+
 @main.route('/')
 @main.route('/models')
 def model_list():
@@ -294,7 +334,6 @@ def finish_model(model_id):
     db.session.commit()
 
     return redirect(url_for('main.model_list'))
-
 
 
 @main.route('/models/<int:model_id>')

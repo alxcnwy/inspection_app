@@ -107,8 +107,12 @@ class Run(db.Model):
 
 class Inspection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    run_id = db.Column(db.Integer, db.ForeignKey('run.id'), nullable=False)
+    run_id = db.Column(db.Integer, db.ForeignKey('run.id'), nullable=True)
+    model_id = db.Column(db.Integer, db.ForeignKey('model.id'), nullable=False)  # New field to store the model
     image_url = db.Column(db.String(256))
     pass_fail = db.Column(db.Boolean, default=False)
     reason = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Establish a relationship with the Model
+    model = db.relationship('Model', backref='inspections', lazy=True)

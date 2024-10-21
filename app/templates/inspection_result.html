@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Inspection Result</h2>
+<img src="{{ inspection.image_url }}" alt="Uploaded Image" style="max-width: 300px;" class="img-thumbnail mb-3">
+<p><strong>Result: </strong> {{ 'PASS' if inspection.pass_fail else 'FAIL' }}</p>
+<p><strong>Reason: </strong> {{ inspection.reason }}</p>
+<a href="{{ url_for('main.model_detail', model_id=inspection.model.id) }}" class="btn btn-primary">Back to Model</a>
+{% endblock %}

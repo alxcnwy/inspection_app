@@ -1,8 +1,8 @@
 """init
 
-Revision ID: 5885024a7628
+Revision ID: e91fc21e3a98
 Revises: 
-Create Date: 2024-10-21 10:09:44.469397
+Create Date: 2024-10-21 16:44:26.582559
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5885024a7628'
+revision = 'e91fc21e3a98'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,20 +42,33 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('model_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=256), nullable=True),
+    sa.Column('model_pkl', sa.String(length=256), nullable=True),
+    sa.Column('fail_description', sa.Text(), nullable=True),
+    sa.Column('pass_description', sa.Text(), nullable=True),
     sa.Column('x1', sa.Integer(), nullable=False),
     sa.Column('y1', sa.Integer(), nullable=False),
     sa.Column('x2', sa.Integer(), nullable=False),
     sa.Column('y2', sa.Integer(), nullable=False),
-    sa.Column('bad_image_1_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_2_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_3_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_4_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_5_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_1_aligned_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_2_aligned_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_3_aligned_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_4_aligned_url', sa.String(length=256), nullable=True),
-    sa.Column('bad_image_5_aligned_url', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_1_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_2_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_3_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_4_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_5_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_1_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_2_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_3_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_4_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_5_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_1_crop', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_2_crop', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_3_crop', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_4_crop', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_5_crop', sa.String(length=256), nullable=True),
+    sa.Column('good_image_1_crop', sa.String(length=256), nullable=True),
+    sa.Column('good_image_2_crop', sa.String(length=256), nullable=True),
+    sa.Column('good_image_3_crop', sa.String(length=256), nullable=True),
+    sa.Column('good_image_4_crop', sa.String(length=256), nullable=True),
+    sa.Column('good_image_5_crop', sa.String(length=256), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['model_id'], ['model.id'], ),
@@ -72,11 +85,13 @@ def upgrade():
     )
     op.create_table('inspection',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('run_id', sa.Integer(), nullable=False),
+    sa.Column('run_id', sa.Integer(), nullable=True),
+    sa.Column('model_id', sa.Integer(), nullable=False),
     sa.Column('image_url', sa.String(length=256), nullable=True),
     sa.Column('pass_fail', sa.Boolean(), nullable=True),
     sa.Column('reason', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['model_id'], ['model.id'], ),
     sa.ForeignKeyConstraint(['run_id'], ['run.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
