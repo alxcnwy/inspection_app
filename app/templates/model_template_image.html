@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 2/4: Upload Template Image</h2>
-<form method="POST" action="{{ url_for('main.upload_template_image') }}" enctype="multipart/form-data">
+<h2>Step 2/5: Upload Template Image</h2>
+<form method="POST" action="{{ url_for('main.upload_template_image', model_id=model.id) }}" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="template_image" class="form-label">Choose Template Image</label>
         <input type="file" id="template_image" name="template_image" class="form-control" accept="image/*" onchange="previewImage(event)" required>

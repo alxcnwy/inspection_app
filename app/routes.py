@@ -1,7 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
+
+from .align import align_and_crop_regions
 from .models import db, Model, ModelRegion, Run, Inspection
 from . import images
 import boto3
+import os
 
 main = Blueprint('main', __name__)
 
@@ -41,7 +44,6 @@ def model_list():
     return render_template('model_list.html', model_data=model_data)
 
 
-
 @main.route('/models/new', methods=['GET', 'POST'])
 def model_create():
     if request.method == 'POST':
@@ -53,47 +55,45 @@ def model_create():
         db.session.commit()
 
         session['model_id'] = new_model.id
-        return redirect(url_for('main.upload_template_image'))
+        return redirect(url_for('main.upload_template_image', model_id=new_model.id))
 
     return render_template('model_create.html')
 
 
-@main.route('/models/upload_template_image', methods=['GET', 'POST'])
-def upload_template_image():
-    model_id = session.get('model_id')
-    if not model_id:
+@main.route('/models/upload_template_image/<int:model_id>', methods=['GET', 'POST'])
+def upload_template_image(model_id):
+    model = Model.query.get(model_id)
+    if not model:
         return redirect(url_for('main.model_create'))
+    session['model_id'] = model_id
 
     if request.method == 'POST' and 'template_image' in request.files:
-        filename = images.save(request.files['template_image'])
-        file_url = images.url(filename)
-        model = Model.query.get(model_id)
-        model.template_image_url = file_url
+        filename = images.save(request.files['template_image'])  # Save only the filename
+        model.template_image_filename = filename
         db.session.commit()
 
-        return redirect(url_for('main.upload_good_images'))
+        return redirect(url_for('main.upload_good_images', model_id=model_id))
 
-    return render_template('model_template_image.html')
+    return render_template('model_template_image.html', model=model)
 
 
-@main.route('/models/upload_good_images', methods=['GET', 'POST'])
-def upload_good_images():
-    model_id = session.get('model_id')
-    if not model_id:
+@main.route('/models/upload_good_images/<int:model_id>', methods=['GET', 'POST'])
+def upload_good_images(model_id):
+    model = Model.query.get(model_id)
+    if not model:
         return redirect(url_for('main.model_create'))
+    session['model_id'] = model_id
 
     if request.method == 'POST':
         for i in range(1, 6):
             if f'good_image_{i}' in request.files:
-                filename = images.save(request.files[f'good_image_{i}'])
-                file_url = images.url(filename)
-                model = Model.query.get(model_id)
-                setattr(model, f'good_image_{i}_url', file_url)
+                filename = images.save(request.files[f'good_image_{i}'])  # Store only filename
+                setattr(model, f'good_image_{i}_filename', filename)
         db.session.commit()
 
-        return redirect(url_for('main.draw_regions'))
+        return redirect(url_for('main.draw_regions', model_id=model_id))
 
-    return render_template('model_good_images.html')
+    return render_template('model_good_images.html', model=model)
 
 
 @main.route('/models/upload_region_images', methods=['POST'])
@@ -106,32 +106,41 @@ def upload_region_images():
     y1 = request.form['y1']
     x2 = request.form['x2']
     y2 = request.form['y2']
-    region_name = request.form['region_name']  # Get the region name
+    region_name = request.form['region_name']
+    fail_description = request.form['fail_description']
+    pass_description = request.form['pass_description']
 
     bad_images = []
     for i in range(1, 6):
         if f'bad_image_{i}' in request.files:
             filename = images.save(request.files[f'bad_image_{i}'])
-            file_url = images.url(filename)
-            bad_images.append(file_url)
+            bad_images.append(filename)
 
-    # Create new region with name
     new_region = ModelRegion(model_id=model_id, x1=x1, y1=y1, x2=x2, y2=y2, name=region_name)
-    for i, img_url in enumerate(bad_images, 1):
-        setattr(new_region, f'bad_image_{i}_url', img_url)
+
+    # Assign the saved filenames to the new region
+    for i, filename in enumerate(bad_images, 1):
+        setattr(new_region, f'bad_image_{i}_filename', filename)
+
     db.session.add(new_region)
     db.session.commit()
 
-    return redirect(url_for('main.draw_regions'))
-
-
-@main.route('/models/draw_regions', methods=['GET', 'POST'])
-def draw_regions():
-    model_id = session.get('model_id')
-    if not model_id:
-        return redirect(url_for('main.model_create'))
-
+    # Save fail and pass descriptions for the model
     model = Model.query.get(model_id)
+    model.fail_description = fail_description
+    model.pass_description = pass_description
+    db.session.commit()
+
+    return redirect(url_for('main.draw_regions', model_id=model_id))
+
+
+@main.route('/models/draw_regions/<int:model_id>', methods=['GET', 'POST'])
+def draw_regions(model_id):
+    model = Model.query.get(model_id)
+    if not model:
+        return redirect(url_for('main.model_create'))
+    session['model_id'] = model_id
+
     return render_template('model_regions.html', model=model)
 
 
@@ -148,41 +157,162 @@ def get_region_data(region_id):
         'bad_image_2_url': region.bad_image_2_url,
         'bad_image_3_url': region.bad_image_3_url,
         'bad_image_4_url': region.bad_image_4_url,
-        'bad_image_5_url': region.bad_image_5_url
+        'bad_image_5_url': region.bad_image_5_url,
+        'fail_description': region.fail_description,
+        'pass_description': region.pass_description
     }
     return region_data
 
 
-
-@main.route('/models/finish_regions', methods=['GET', 'POST'])
+@main.route('/models/finish_regions', methods=['POST'])
 def finish_regions():
     model_id = session.get('model_id')
     if not model_id:
         return redirect(url_for('main.model_create'))
 
     model = Model.query.get(model_id)
+
+    # Process good images and align them
+    for i in range(1, 6):
+        good_image_filename = getattr(model, f'good_image_{i}_filename')  # Now fetching filename
+        if good_image_filename:
+            good_image_path = os.path.join('app/static/uploads', good_image_filename)
+            aligned_image_path = align_and_crop_regions(good_image_path, model)
+            if aligned_image_path:
+                setattr(model, f'good_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+            else:
+                setattr(model, f'good_image_{i}_aligned_filename', None)
+
+    # Process bad images for each region and align them
+    for region in model.regions:
+        for i in range(1, 6):
+            bad_image_filename = getattr(region, f'bad_image_{i}_filename')  # Now fetching filename
+            if bad_image_filename:
+                bad_image_path = os.path.join('app/static/uploads', bad_image_filename)
+                aligned_image_path = align_and_crop_regions(bad_image_path, model)
+                if aligned_image_path:
+                    setattr(region, f'bad_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+                else:
+                    setattr(region, f'bad_image_{i}_aligned_filename', None)
+
+    db.session.commit()
+
+    return redirect(url_for('main.review_images', model_id=model.id))
+
+
+@main.route('/models/<int:model_id>/review_images', methods=['GET', 'POST'])
+def review_images(model_id):
+    model = Model.query.get_or_404(model_id)
+
+    # If new images were uploaded, handle alignment
+    if request.method == 'POST':
+        for i in range(1, 6):
+            if f'good_image_{i}' in request.files:
+                filename = images.save(request.files[f'good_image_{i}'])
+                setattr(model, f'good_image_{i}_filename', filename)  # Save the filename instead of URL
+                good_image_path = os.path.join('app/static/uploads', filename)
+                aligned_image_path = align_and_crop_regions(good_image_path, model)
+                if aligned_image_path:
+                    setattr(model, f'good_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+                else:
+                    setattr(model, f'good_image_{i}_aligned_filename', None)
+
+        for region in model.regions:
+            for i in range(1, 6):
+                if f'bad_image_{region.id}_{i}' in request.files:
+                    filename = images.save(request.files[f'bad_image_{region.id}_{i}'])
+                    setattr(region, f'bad_image_{i}_filename', filename)  # Save the filename instead of URL
+                    bad_image_path = os.path.join('app/static/uploads', filename)
+                    aligned_image_path = align_and_crop_regions(bad_image_path, model)
+                    if aligned_image_path:
+                        setattr(region, f'bad_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+                    else:
+                        setattr(region, f'bad_image_{i}_aligned_filename', None)
+
+        db.session.commit()
+
+    # Check if all images are aligned
+    all_images_aligned = True
+    missing_good_images = {}
+    for i in range(1, 6):
+        aligned_image = getattr(model, f'good_image_{i}_aligned_filename')
+        if not aligned_image:
+            missing_good_images[f'good_image_{i}'] = True
+            all_images_aligned = False
+
+    missing_bad_images_by_region = {}
+    for region in model.regions:
+        missing_bad_images = {}
+        for i in range(1, 6):
+            aligned_image = getattr(region, f'bad_image_{i}_aligned_filename')
+            if not aligned_image:
+                missing_bad_images[f'bad_image_{i}'] = True
+                all_images_aligned = False
+        missing_bad_images_by_region[region.name] = missing_bad_images
+
+    if all_images_aligned:
+        return render_template('model_review_images.html', all_images_aligned=True, model=model)
+
+    return render_template('model_review_images.html', model=model, missing_good_images=missing_good_images, missing_bad_images_by_region=missing_bad_images_by_region, all_images_aligned=False)
+
+
+@main.route('/models/finish/<int:model_id>', methods=['POST'])
+def finish_model(model_id):
+    # Logic for finishing the model setup
+    model = Model.query.get_or_404(model_id)
+
+    # todo:
+    # for each region:
+    #     align all 5 good and 5 bad images then crop the zoomed region and save as image and save path on model object
+    #     run train_bedrock(good_img_urls, bad_img_urls, fail_desc, pass_desc) where good_img_urls and bad_img_urls are the urls of the cropped aligned regions
+
+
+
+
+    # Mark the model as 'ready'
     model.status = 'ready'
     db.session.commit()
 
-    session.pop('model_id', None)
-    return redirect(url_for('main.model_detail', model_id=model_id))
+    return redirect(url_for('main.model_list'))
 
 
 @main.route('/models/<int:model_id>')
 def model_detail(model_id):
     model = Model.query.get_or_404(model_id)
 
-    # If the model is still being set up, determine which step to send the user to
+    # If the model is still in setup, redirect to the relevant step
     if model.status == 'setup':
-        if not model.template_image_url:
+        if not model.template_image_filename:
             return redirect(url_for('main.upload_template_image', model_id=model_id))
-        elif not all([model.good_image_1_url, model.good_image_2_url, model.good_image_3_url, model.good_image_4_url, model.good_image_5_url]):
+        elif not all([
+            model.good_image_1_filename,
+            model.good_image_2_filename,
+            model.good_image_3_filename,
+            model.good_image_4_filename,
+            model.good_image_5_filename
+        ]):
             return redirect(url_for('main.upload_good_images', model_id=model_id))
         else:
-            return redirect(url_for('main.draw_regions', model_id=model_id))
+            # Check if all good images have aligned versions
+            all_images_aligned = any([
+                getattr(model, f'good_image_{i}_aligned_filename') for i in range(1, 6)
+            ])
+            if all_images_aligned:
+                return redirect(url_for('main.review_images', model_id=model_id))
+            else:
+                return redirect(url_for('main.draw_regions', model_id=model_id))
 
-    # If the model is ready or running, show the model detail page
-    return render_template('model_detail.html', model=model)
+    # Generate full image URLs/paths for template and good images
+    template_image_url = model.get_image_path(model.template_image_filename)
+    good_images_urls = [
+        model.get_image_path(model.good_image_1_filename),
+        model.get_image_path(model.good_image_2_filename),
+        model.get_image_path(model.good_image_3_filename),
+        model.get_image_path(model.good_image_4_filename),
+        model.get_image_path(model.good_image_5_filename),
+    ]
+
+    return render_template('model_detail.html', model=model, template_image_url=template_image_url)
 
 
 @main.route('/models/<int:model_id>/delete', methods=['POST'])

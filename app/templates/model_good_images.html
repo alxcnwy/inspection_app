@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 3/4: Upload Good Images</h2>
-<form method="POST" action="{{ url_for('main.upload_good_images') }}" enctype="multipart/form-data">
+<h2>Step 3/5: Upload Good Images</h2>
+<form method="POST" action="{{ url_for('main.upload_good_images', model_id=model.id) }}" enctype="multipart/form-data">
     {% for i in range(1, 6) %}
         <div class="mb-3">
             <label for="good_image_{{ i }}" class="form-label">Choose Good Image {{ i }}</label>
-            <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})">
+            <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})" style="max-width:300px;">
             <img id="imagePreview_{{ i }}" style="max-width: 300px; margin-top: 20px;">
         </div>
     {% endfor %}

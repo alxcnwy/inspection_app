@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Step 4/4: Define Bad Regions</h2>
-    <p>Draw regions on the template image, name them, and upload bad images for each region.</p>
+    <h2>Step 4/5: Define Bad Regions</h2>
+    <h4 class="py-5">Draw regions on the template image, name them, and upload bad image examples for each region. You should have a region for each key component of the thing being inspected.</h4>
 
     <div class="row">
         <!-- Sidebar for region names and uploading bad images -->
@@ -32,10 +32,22 @@
                 <input type="hidden" name="y1" id="y1">
                 <input type="hidden" name="x2" id="x2">
                 <input type="hidden" name="y2" id="y2">
+
                 <h4>Region Name</h4>
                 <div class="mb-3">
                     <input type="text" id="region_name" name="region_name" class="form-control" required>
                 </div>
+
+                <h4>Fail Description</h4>
+                <div class="mb-3">
+                    <textarea id="fail_description" name="fail_description" class="form-control" required placeholder="Describe what FAIL looks like in this region"></textarea>
+                </div>
+
+                <h4>Pass Description</h4>
+                <div class="mb-3">
+                    <textarea id="pass_description" name="pass_description" class="form-control" required placeholder="Describe what PASS looks like in this region"></textarea>
+                </div>
+
                 <h4>Upload Bad Images for the Region:</h4>
                 {% for i in range(1, 6) %}
                     <div class="mb-3">
@@ -45,194 +57,179 @@
                         <img id="badImagePreview_{{ i }}" style="max-width: 100px; margin-top: 10px; display:none;">
                     </div>
                 {% endfor %}
-                <div id="error-message" style="color: red; display: none;">Please upload all 5 bad images.</div>
+
                 <button type="submit" class="btn btn-primary">Save Region</button>
                 <button type="button" class="btn btn-danger" id="resetRegion">Cancel</button>
             </form>
 
             <!-- Button to save all model regions -->
             <form method="POST" action="{{ url_for('main.finish_regions') }}">
-                <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;">Save Model
-                    Regions
-                </button>
+                <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;" disabled>Save Model Regions</button>
             </form>
         </div>
 
         <!-- Canvas for drawing the regions -->
         <div class="col-md-8">
-            <img id="templateImage" src="{{ model.template_image_url }}" alt="Template Image" class="img-fluid mb-3"
-                 style="display:none;">
+            <img id="templateImage" src="{{ url_for('static', filename='uploads/' ~ model.template_image_filename) }}"
+                 alt="Template Image" class="img-fluid mb-3" style="display:none;">
             <canvas id="templateCanvas" class="border"></canvas>
         </div>
     </div>
 
     <script>
+        // Initialize canvas and drawing variables
+        const canvas = document.getElementById('templateCanvas');
+        const ctx = canvas.getContext('2d');
+        let startX, startY, isDrawing = false;
+        let regions = {{ model.regions|length }};  // Initialize regions count based on existing regions
+        let currentRegion = null;
 
-const canvas = document.getElementById('templateCanvas');
-const ctx = canvas.getContext('2d');
-let startX, startY, isDrawing = false;
-let regions = [];
-let currentRegion = null;
+        const templateImage = document.getElementById('templateImage');
+        const regionForm = document.getElementById('regionForm');
+        const regionList = document.getElementById('regionList');
+        const addRegionBtn = document.getElementById('addRegionBtn');
+        const drawInstruction = document.getElementById('drawInstruction');
+        const saveRegionsBtn = document.getElementById('saveRegionsBtn');  // Get the Save Model Regions button
 
-const templateImage = document.getElementById('templateImage');
-const regionForm = document.getElementById('regionForm');
-const regionList = document.getElementById('regionList');
-const addRegionBtn = document.getElementById('addRegionBtn');
-const drawInstruction = document.getElementById('drawInstruction');
-const saveRegionsBtn = document.getElementById('saveRegionsBtn');  // Get the Save Model Regions button
+        // Initially disable drawing and the save button
+        let drawingEnabled = false;
+        let selectedRegionId = null;
 
-// Initially disable drawing
-let drawingEnabled = false;
-let selectedRegionId = null;
+        // Disable the "Save Model Regions" button initially if no regions exist
+        if (regions === 0) {
+            saveRegionsBtn.disabled = true;
+            saveRegionsBtn.style.display = 'none';  // Hide if no regions exist
+        } else {
+            saveRegionsBtn.disabled = false;
+            saveRegionsBtn.style.display = 'block';  // Show if regions exist
+        }
 
-// Hide the "Save Model Regions" button initially
-saveRegionsBtn.style.display = 'block';  // Button is visible initially
+        // Draw the template image on the canvas
+        templateImage.onload = function () {
+            canvas.width = templateImage.width;
+            canvas.height = templateImage.height;
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            templateImage.style.display = 'none'; // hide the actual image element
+            drawRegions(); // Draw existing regions on load
+        };
 
-// Draw the template image on the canvas
-templateImage.onload = function () {
-    canvas.width = templateImage.width;
-    canvas.height = templateImage.height;
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-    templateImage.style.display = 'none'; // hide the actual image element
-};
+        templateImage.src = templateImage.src; // Trigger the image load
 
-templateImage.src = templateImage.src; // Trigger the image load
+        // Drawing functionality
+        canvas.addEventListener('mousedown', (e) => {
+            if (!drawingEnabled) return; // Only draw after clicking "Add Region"
+            isDrawing = true;
+            [startX, startY] = [e.offsetX, e.offsetY];
+        });
 
-// Drawing functionality
-canvas.addEventListener('mousedown', (e) => {
-    if (!drawingEnabled) return; // Only draw after clicking "Add Region"
-    isDrawing = true;
-    [startX, startY] = [e.offsetX, e.offsetY];
-});
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+            drawRegions(); // Redraw saved regions
+            ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY); // Draw the new region being added
+        });
 
-canvas.addEventListener('mousemove', (e) => {
-    if (!isDrawing) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
-    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-    ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY);
-});
-
-canvas.addEventListener('mouseup', (e) => {
-    if (!drawingEnabled) return;
-    isDrawing = false;
-    document.getElementById('x1').value = startX;
-    document.getElementById('y1').value = startY;
-    document.getElementById('x2').value = e.offsetX;
-    document.getElementById('y2').value = e.offsetY;
-    regionForm.style.display = 'block';
-    drawInstruction.style.display = 'none'; // Hide "Draw region" message
-    regions.push({x1: startX, y1: startY, x2: e.offsetX, y2: e.offsetY});
-    drawingEnabled = false;
-    addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
-    saveRegionsBtn.style.display = 'none';  // Hide "Save Model Regions" button while adding or editing
-});
-
-// Draw a single region
-function drawRegion(x1, y1, x2, y2, highlight = false) {
-    ctx.strokeStyle = highlight ? 'red' : 'black';
-    ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
-}
-
-// Add new region
-function addNewRegion() {
-    // Reset the form fields
-    regionForm.reset();
-
-    // Clear image previews
-    for (let i = 1; i <= 5; i++) {
-        const imgPreview = document.getElementById(`badImagePreview_${i}`);
-        imgPreview.src = '';
-        imgPreview.style.display = 'none';
-    }
-
-    regionForm.style.display = 'none'; // Hide the form initially
-    drawInstruction.style.display = 'block'; // Show "Draw region on the image"
-    addRegionBtn.style.display = 'none'; // Hide "Add Region" button
-    saveRegionsBtn.style.display = 'none';  // Hide "Save Model Regions" button while adding a new region
-    drawingEnabled = true;
-
-    // Clear selection in the sidebar
-    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-
-    // Deselect any previously selected region
-    selectedRegionId = null;
-}
-
-// Deselect region and hide form
-function deselectRegion() {
-    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-    regionForm.style.display = 'none'; // Hide the form
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-    selectedRegionId = null;
-
-    // Show the "Save Model Regions" button again after deselecting
-    saveRegionsBtn.style.display = 'block';
-}
-
-// Populate form data with region information using AJAX
-function populateRegionForm(regionId) {
-    fetch(`/regions/${regionId}/data`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('x1').value = data.x1;
-            document.getElementById('y1').value = data.y1;
-            document.getElementById('x2').value = data.x2;
-            document.getElementById('y2').value = data.y2;
-            document.getElementById('region_name').value = data.name;
-
-            // Update image previews if available
-            for (let i = 1; i <= 5; i++) {
-                const imageUrl = data[`bad_image_${i}_url`];
-                const imgPreview = document.getElementById(`badImagePreview_${i}`);
-                if (imageUrl) {
-                    imgPreview.src = imageUrl;
-                    imgPreview.style.display = 'block';
-                } else {
-                    imgPreview.style.display = 'none';
-                }
-            }
+        canvas.addEventListener('mouseup', (e) => {
+            if (!drawingEnabled) return;
+            isDrawing = false;
+            document.getElementById('x1').value = startX;
+            document.getElementById('y1').value = startY;
+            document.getElementById('x2').value = e.offsetX;
+            document.getElementById('y2').value = e.offsetY;
             regionForm.style.display = 'block';
+            drawInstruction.style.display = 'none'; // Hide "Draw region" message
+            drawingEnabled = false;
+            addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
+            hideSaveRegionsButton(); // Hide the save button while adding a new region
+        });
 
-            // Hide "Save Model Regions" button while editing
-            saveRegionsBtn.style.display = 'none';
-        })
-        .catch(error => console.error('Error fetching region data:', error));
-}
+        // Draw all saved regions on the canvas
+        function drawRegions() {
+            {% for region in model.regions %}
+            drawRegion({{ region.x1 }}, {{ region.y1 }}, {{ region.x2 }}, {{ region.y2 }});
+            {% endfor %}
+        }
 
-// Select a region from the sidebar
-function selectRegion(regionId, x1, y1, x2, y2) {
-    // Check if the region is already selected
-    if (selectedRegionId === regionId) {
-        // If it's already selected, deselect it and hide the form
-        deselectRegion();
-        return;
-    }
+        // Draw a single region
+        function drawRegion(x1, y1, x2, y2, highlight = false) {
+            ctx.strokeStyle = highlight ? 'red' : 'black';
+            ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+        }
 
-    // Set this region as the selected one
-    selectedRegionId = regionId;
+        // Add new region
+        function addNewRegion() {
+            // Reset the form fields
+            regionForm.reset();
 
-    // Highlight the selected region in the list
-    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-    const selectedRegion = document.querySelector(`[data-region-id="${regionId}"]`);
-    selectedRegion.classList.add('active');
+            // Clear image previews
+            for (let i = 1; i <= 5; i++) {
+                const imgPreview = document.getElementById(`badImagePreview_${i}`);
+                imgPreview.src = '';
+                imgPreview.style.display = 'none';
+            }
 
-    // Clear the canvas and redraw all regions, highlighting the selected one
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
-    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-    drawRegion(x1, y1, x2, y2, true); // Highlight the selected region
+            regionForm.style.display = 'none'; // Hide the form initially
+            drawInstruction.style.display = 'block'; // Show "Draw region on the image"
+            addRegionBtn.style.display = 'none'; // Hide "Add Region" button
+            drawingEnabled = true;
 
-    // Fetch region data and populate form
-    populateRegionForm(regionId);
-}
+            // Clear selection in the sidebar
+            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
 
-// Reset button logic
-document.getElementById('resetRegion').addEventListener('click', function () {
-    location.reload();
-});
+            // Deselect any previously selected region
+            selectedRegionId = null;
+
+            // Hide the save button while adding a new region
+            hideSaveRegionsButton();
+        }
+
+        // Deselect region and hide form
+        function deselectRegion() {
+            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+            regionForm.style.display = 'none'; // Hide the form
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            drawRegions(); // Redraw all regions
+            selectedRegionId = null;
+        }
+
+        // Enable the "Save Model Regions" button if at least one region exists
+        function updateSaveRegionsButton() {
+            if (regions > 0) {
+                saveRegionsBtn.disabled = false;
+                saveRegionsBtn.style.display = 'block';  // Show the button
+            } else {
+                hideSaveRegionsButton();
+            }
+        }
+
+        // Hide the "Save Model Regions" button
+        function hideSaveRegionsButton() {
+            saveRegionsBtn.disabled = true;
+            saveRegionsBtn.style.display = 'none';  // Hide the button
+        }
+
+        // Automatically zoom out until the entire canvas is visible
+        function autoZoomOutCanvas() {
+            const canvas = document.getElementById('templateCanvas');
+            const canvasContainer = canvas.parentElement;
+            const canvasWidth = canvas.width;
+            const canvasHeight = canvas.height;
+            const containerWidth = canvasContainer.clientWidth;
+            const containerHeight = canvasContainer.clientHeight;
+
+            let scaleFactor = Math.min(containerWidth / canvasWidth, containerHeight / canvasHeight);
+            if (scaleFactor < 1) {
+                document.body.style.transform = `scale(${scaleFactor})`;
+                document.body.style.transformOrigin = 'top left';
+            }
+        }
+
+        // Call the zoom out function after the canvas is loaded
+        window.onload = function () {
+            autoZoomOutCanvas();
+        };
 
     </script>
 

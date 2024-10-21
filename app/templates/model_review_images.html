@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if all_images_aligned %}
+        <h2>Step 5/5: Train Model</h2>
+        <p>All images aligned. Model is ready to train - will take approximately 1 minute, do not close the page!</p>
+        <form method="POST" action="{{ url_for('main.finish_model', model_id=model.id) }}">
+            <button type="submit" class="btn btn-success">Train Model</button>
+        </form>
+
+    {% else %}
+        <h2>Step 5/5: Review Images</h2>
+        <p style="text-align:center; color:red;">Not all images could align onto the template - please upload new
+            images</p>
+
+        <h3>Good Images</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% for i in range(1, 6) %}
+                <div class="mb-3">
+                    {% set good_image_filename = getattr(model, 'good_image_' ~ i ~ '_filename') %}
+                    {% set aligned_good_image_filename = getattr(model, 'good_image_' ~ i ~ '_aligned_filename') %}
+
+                    {% if not aligned_good_image_filename %}
+
+                        <p>Good Image {{ i }} (Original)</p>
+                        <img src="{{ url_for('static', filename='uploads/' + good_image_filename) }}"
+                             class="img-thumbnail"
+                             alt="Good Image {{ i }}" style="width: 150px;">
+
+                        <p style="color: red;">Alignment Failed for Good Image {{ i }}</p>
+                        <label for="good_image_{{ i }}">Upload new Good Image {{ i }}</label>
+                        <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control"
+                               accept="image/*" style="max-width:300px;">
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <h3>Bad Images</h3>
+            {% for region in model.regions %}
+                <h4>Region: {{ region.name }}</h4>
+                {% for i in range(1, 6) %}
+                    <div class="mb-3">
+                        {% set bad_image_filename = getattr(region, 'bad_image_' ~ i ~ '_filename') %}
+                        {% set aligned_bad_image_filename = getattr(region, 'bad_image_' ~ i ~ '_aligned_filename') %}
+
+                        {% if not aligned_bad_image_filename %}
+                            <p>Bad Image {{ i }} (Original)</p>
+                            <img src="{{ url_for('static', filename='uploads/' + bad_image_filename) }}"
+                                 class="img-thumbnail"
+                                 alt="Bad Image {{ i }}" style="width: 150px;">
+
+                            <p style="color: red;">Alignment Failed for Bad Image {{ i }}</p>
+                            <label for="bad_image_{{ region.id }}_{{ i }}">Upload new Bad Image {{ i }}</label>
+                            <input type="file" id="bad_image_{{ region.id }}_{{ i }}"
+                                   name="bad_image_{{ region.id }}_{{ i }}" class="form-control" accept="image/*"  style="max-width:300px;">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Upload Replacement Images</button>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -7,35 +7,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h2>Model: {{ model.name }}</h2>
-        <p><strong>Status:</strong>
-            {% if model.status == 'ready' %}
-                <span class="badge bg-success">Ready</span>
-            {% elif model.status == 'setup' %}
-                <span class="badge bg-secondary">Setup</span>
-            {% elif model.status == 'running' %}
-                <span class="badge bg-warning text-dark">Running</span>
-            {% endif %}
-        </p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Model: {{ model.name }}</h2>
+            <p><strong>Status:</strong>
+                {% if model.status == 'ready' %}
+                    <span class="badge bg-success">Ready</span>
+                {% elif model.status == 'setup' %}
+                    <span class="badge bg-secondary">Setup</span>
+                {% elif model.status == 'running' %}
+                    <span class="badge bg-warning text-dark">Running</span>
+                {% endif %}
+            </p>
+            <p><strong>Description: </strong>{{ model.description }}</p>
+        </div>
+        <div class="d-flex flex-column">
+            <a href="#" class="btn btn-primary mb-2">Test on Image</a>
+            <a href="{{ url_for('main.run_model', model_id=model.id) }}" class="btn btn-primary">Run on S3</a>
+        </div>
     </div>
-    <div class="d-flex flex-column">
-        <a href="#" class="btn btn-primary mb-2">Test on Image</a>
-        <a href="{{ url_for('main.run_model', model_id=model.id) }}" class="btn btn-primary">Run on S3</a>
-    </div>
-</div>
-
-{% if model.status == 'setup' %}
-    <p>The model setup is incomplete. You can continue setting up the model below:</p>
-    <a href="{{ url_for('main.upload_template_image') }}" class="btn btn-warning">Continue Setup</a>
-{% else %}
-    <p><strong>Description: </strong>{{ model.description }}</p>
 
     <!-- Uploaded Images Section -->
     <div class="p-3 rounded mb-3" style="text-align:center;">
         <h3 style="text-align:center;">Template Image</h3>
-        <img src="{{ model.template_image_url }}" class="img-thumbnail" alt="Template Image"
+        <img src="{{ url_for('static', filename='uploads/' + model.template_image_filename) }}"
+             class="img-thumbnail" alt="Template Image"
              style="width: 500px;"><br><br>
     </div>
 
@@ -43,8 +39,14 @@
     <div class="bg-light p-3 rounded mb-3" style="text-align:center;">
         <h3 style="text-align:center;">Good Images</h3>
         {% for i in range(1, 6) %}
-            <img src="{{ getattr(model, 'good_image_' ~ i ~ '_url') }}" class="img-thumbnail"
-                 alt="Good Image {{ i }}" style="width: 150px;">
+            {% set good_image_filename = getattr(model, 'good_image_' ~ i ~ '_filename') %}
+            {% if good_image_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + good_image_filename) }}"
+                     class="img-thumbnail"
+                     alt="Good Image {{ i }}" style="width: 150px;">
+            {% else %}
+                <p>Good Image {{ i }} not uploaded</p>
+            {% endif %}
         {% endfor %}
     </div>
 
@@ -57,13 +59,17 @@
             <div class="mt-2" style="text-align:center;">
                 <h5>Bad Images</h5>
                 {% for i in range(1, 6) %}
-                    <img src="{{ getattr(region, 'bad_image_' ~ i ~ '_url') }}" class="img-thumbnail"
-                         alt="Bad Image {{ i }}" style="width: 150px;">
+                    {% set bad_image_filename = getattr(region, 'bad_image_' ~ i ~ '_filename') %}
+                    {% if bad_image_filename %}
+                        <img src="{{ url_for('static', filename='uploads/' + bad_image_filename) }}"
+                             class="img-thumbnail"
+                             alt="Bad Image {{ i }}" style="width: 150px;">
+                    {% else %}
+                        <p>Bad Image {{ i }} not uploaded</p>
+                    {% endif %}
                 {% endfor %}
             </div>
-            <br/>
-            <br/>
+            <br/><br/>
         {% endfor %}
     </div>
-{% endif %}
 {% endblock %}

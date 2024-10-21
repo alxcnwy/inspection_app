@@ -1,8 +1,8 @@
 """init
 
-Revision ID: 2642898980ce
+Revision ID: 5885024a7628
 Revises: 
-Create Date: 2024-10-17 12:50:54.190561
+Create Date: 2024-10-21 10:09:44.469397
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2642898980ce'
+revision = '5885024a7628'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,12 +22,17 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=128), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('template_image_url', sa.String(length=256), nullable=True),
-    sa.Column('good_image_1_url', sa.String(length=256), nullable=True),
-    sa.Column('good_image_2_url', sa.String(length=256), nullable=True),
-    sa.Column('good_image_3_url', sa.String(length=256), nullable=True),
-    sa.Column('good_image_4_url', sa.String(length=256), nullable=True),
-    sa.Column('good_image_5_url', sa.String(length=256), nullable=True),
+    sa.Column('template_image_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_1_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_2_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_3_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_4_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_5_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_1_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_2_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_3_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_4_aligned_filename', sa.String(length=256), nullable=True),
+    sa.Column('good_image_5_aligned_filename', sa.String(length=256), nullable=True),
     sa.Column('status', sa.String(length=64), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
@@ -36,6 +41,7 @@ def upgrade():
     op.create_table('model_region',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('model_id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=256), nullable=True),
     sa.Column('x1', sa.Integer(), nullable=False),
     sa.Column('y1', sa.Integer(), nullable=False),
     sa.Column('x2', sa.Integer(), nullable=False),
@@ -45,6 +51,11 @@ def upgrade():
     sa.Column('bad_image_3_url', sa.String(length=256), nullable=True),
     sa.Column('bad_image_4_url', sa.String(length=256), nullable=True),
     sa.Column('bad_image_5_url', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_1_aligned_url', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_2_aligned_url', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_3_aligned_url', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_4_aligned_url', sa.String(length=256), nullable=True),
+    sa.Column('bad_image_5_aligned_url', sa.String(length=256), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['model_id'], ['model.id'], ),

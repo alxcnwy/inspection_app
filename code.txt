@@ -18,81 +18,269 @@
             styles.css
             logo.png
             uploads/
+                ImageID-69556840_2.jpg
+                ImageID-69507921_4_aligned.jpg
                 ImageID-70014907.jpg
+                ImageID-69507921_9.jpg
+                ImageID-69507921_8.jpg
+                ImageID-69539780_1_1_14.jpg
                 ImageID-70014721.jpg
                 ImageID-69992311.jpg
+                ImageID-69556840_3.jpg
                 ImageID-69527447.jpg
+                ImageID-69556840_1.jpg
                 ImageID-69526808.jpg
+                ImageID-69541897_8.jpg
                 ImageID-69611658_aligned.jpg
+                ImageID-69526808_2_aligned.jpg
                 ImageID-69578836_aligned.jpg
+                ImageID-69507780_3_aligned.jpg
+                ImageID-69507780.jpg
+                ImageID-69539780_1_1_8.jpg
+                ImageID-69696964.jpg
+                ImageID-69556840_4.jpg
+                ImageID-69527447_2_aligned.jpg
+                ImageID-69528139_3_aligned.jpg
+                ImageID-69539780_1_1_13.jpg
                 .DS_Store
                 ImageID-69541897.jpg
+                ImageID-69534286_8.jpg
+                ImageID-69539780_1_1_12.jpg
+                ImageID-69556840_5.jpg
+                ImageID-69539780_1_1_9.jpg
                 ImageID-69539780_aligned.jpg
+                ImageID-69525587_3_aligned.jpg
+                ImageID-69556840_7.jpg
+                ImageID-69616854_9.jpg
                 ImageID-70014651.jpg
+                ImageID-69539780_1_1_10.jpg
                 ImageID-69525385_aligned.jpg
+                ImageID-69640765_1.jpg
+                ImageID-69539780_1_1_11.jpg
+                ImageID-69616854_8.jpg
+                ImageID-69556840_6.jpg
                 ImageID-69539780_1.jpg
+                ImageID-69561292_5.jpg
+                ImageID-70014549_1.jpg
                 ImageID-69633161_aligned.jpg
+                ImageID-69546267_2.jpg
                 ImageID-69506170.jpg
+                template_8.jpg
                 input_7.jpg
+                ImageID-69525587_7.jpg
                 ImageID-69541897_aligned.jpg
+                ImageID-69572597_5.jpg
                 ImageID-69525385.jpg
+                ImageID-70014651_1.jpg
+                ImageID-70101246_aligned.jpg
+                ImageID-69515661_aligned.jpg
+                ImageID-69507780_1.jpg
+                ImageID-69528139.jpg
+                ImageID-69572597_2_aligned.jpg
+                ImageID-69572597_4.jpg
+                ImageID-69525587_6.jpg
                 ImageID-69640765.jpg
                 input_6.jpg
+                ImageID-69504832_3_aligned.jpg
+                template_9.jpg
+                ImageID-69506170_1.jpg
+                ImageID-69546267_3.jpg
+                ImageID-69616854_12.jpg
+                ImageID-69518801_1.jpg
+                ImageID-69561292_4.jpg
+                ImageID-69995179.jpg
                 ImageID-69539780_2.jpg
+                ImageID-69616854_10.jpg
+                ImageID-69546267_1.jpg
                 input_4.jpg
+                ImageID-69525587_4.jpg
+                ImageID-69507780_3.jpg
+                ImageID-70014651_2.jpg
+                ImageID-69507780_2.jpg
                 ImageID-70081023_1.jpg
+                ImageID-69525587_5.jpg
                 input_5.jpg
+                ImageID-69696964_aligned.jpg
+                ImageID-69616854_11.jpg
+                ImageID-69561292_3.jpg
+                ImageID-70032310_1.jpg
+                ImageID-69546267_4.jpg
                 ImageID-69633161.jpg
+                ImageID-69504832.jpg
                 input_1.jpg
+                ImageID-69525587_1.jpg
+                ImageID-69572597_3.jpg
                 input_10.jpg
+                ImageID-69526808_1_aligned.jpg
+                ImageID-69572597_2.jpg
+                ImageID-69499858_2.jpg
+                ImageID-69995179_1.jpg
                 ImageID-69499858.jpg
+                ImageID-69567194_1.jpg
+                ImageID-69561292_2.jpg
                 ImageID-69611658.jpg
+                ImageID-69499858_1_aligned.jpg
                 input_10_aligned.jpg
                 input_2.jpg
+                ImageID-69525587_2.jpg
                 ImageID-69646304.jpg
                 ImageID-70014544.jpg
+                ImageID-69572597.jpg
                 ImageID-69539780.jpg
+                ImageID-69616854_5_aligned.jpg
+                ImageID-69572597_1.jpg
                 ImageID-69518801_aligned.jpg
                 ImageID-70625919.jpg
+                ImageID-69499858_1.jpg
+                ImageID-69525587_3.jpg
                 input_3.jpg
+                ImageID-69567194_2.jpg
+                ImageID-69519600_5_aligned.jpg
+                ImageID-69561292_1.jpg
+                ImageID-69534286_4_aligned.jpg
+                ImageID-69525587.jpg
+                ImageID-69519600_2.jpg
+                ImageID-69539780_1_1_11_aligned.jpg
                 template_1.jpg
+                ImageID-69504832_3.jpg
                 ImageID-70081023.jpg
+                template_10.jpg
+                ImageID-69532634_3.jpg
+                ImageID-69546267_3_aligned.jpg
+                ImageID-69532634_2.jpg
+                template_11.jpg
+                ImageID-70014549.jpg
+                ImageID-69504832_2.jpg
+                ImageID-70032773.jpg
                 ImageID-69519600_aligned.jpg
+                ImageID-69519600_3.jpg
                 ImageID-69567194_aligned.jpg
                 ImageID-69519600_1.jpg
                 template_2.jpg
+                template_13.jpg
                 ImageID-69567194.jpg
+                ImageID-69532634_1.jpg
+                ImageID-69527447_3_aligned.jpg
+                template_12.jpg
+                ImageID-69504832_1.jpg
                 template_3.jpg
+                ImageID-69515661.jpg
+                ImageID-69519600_4.jpg
+                ImageID-69616854.jpg
+                template_7.jpg
                 input_8.jpg
                 ImageID-69539780_2_aligned.jpg
+                ImageID-69507780_2_aligned.jpg
+                ImageID-69561292.jpg
                 ImageID-69534286.jpg
+                ImageID-69532634.jpg
+                ImageID-69504832_4.jpg
                 input_9.jpg
+                template_6.jpg
+                ImageID-69539780_1_1_8_aligned.jpg
+                ImageID-69519600_5.jpg
+                ImageID-69507921.jpg
                 ImageID-69518801.jpg
                 ImageID-71031962.jpg
+                template_4.jpg
+                ImageID-69507780_aligned.jpg
+                ImageID-70032773_1.jpg
+                ImageID-69504832_4_aligned.jpg
+                ImageID-69574312.jpg
+                template_5.jpg
+                ImageID-69525587_7_aligned.jpg
+                ImageID-69507921_5_aligned.jpg
+                ImageID-69539780_1_1_7.jpg
                 ImageID-69578836.jpg
                 ImageID-69539780_1_2.jpg
+                ImageID-69525587_4_aligned.jpg
+                ImageID-69616854_5.jpg
+                ImageID-69567194_1_aligned.jpg
                 input.jpg
+                ImageID-69534286_6.jpg
                 ImageID-69519600.jpg
+                ImageID-69526808_2.jpg
+                ImageID-69541897_3.jpg
+                ImageID-69525385_2.jpg
+                ImageID-69525385_3.jpg
                 ImageID-70096298.jpg
+                ImageID-69541897_2.jpg
+                ImageID-69526808_3.jpg
+                ImageID-69572922.jpg
+                ImageID-69507921_1.jpg
+                ImageID-69534286_7.jpg
+                ImageID-69616854_4.jpg
                 ImageID-69611658_1_aligned.jpg
+                ImageID-69539780_1_1_6.jpg
+                ImageID-69539780_1_1_4.jpg
                 ImageID-69539780_1_1.jpg
+                ImageID-69527447_4.jpg
+                ImageID-69616854_6.jpg
                 template.jpg
                 ImageID-69546267.jpg
+                ImageID-69534286_5.jpg
+                ImageID-69507921_3.jpg
+                ImageID-69526808_1.jpg
+                ImageID-69525385_1.jpg
+                ImageID-69541897_1.jpg
+                ImageID-69534286_4.jpg
+                ImageID-69507921_2.jpg
                 ImageID-69556840.jpg
+                ImageID-69507780_1_aligned.jpg
                 ImageID-69539780_1_aligned.jpg
                 ImageID-69499858_aligned.jpg
+                ImageID-70101246.jpg
+                ImageID-69616854_7.jpg
                 ImageID-70590958.jpg
+                ImageID-69527447_5.jpg
+                ImageID-69539780_1_1_5.jpg
+                ImageID-69539780_1_1_1.jpg
                 ImageID-69983010.jpg
                 ImageID-69527447_1.jpg
+                ImageID-69528139_3.jpg
+                ImageID-69616854_3.jpg
                 ImageID-69527447_aligned.jpg
+                ImageID-69507921_6.jpg
+                ImageID-69528139_1_aligned.jpg
+                ImageID-69541897_5.jpg
+                ImageID-69572597_aligned.jpg
+                ImageID-69526808_4.jpg
+                ImageID-69525385_4.jpg
+                ImageID-69515661_1.jpg
+                ImageID-69525385_5.jpg
+                ImageID-69526808_5.jpg
+                ImageID-69541897_4.jpg
                 ImageID-70014544_1.jpg
+                ImageID-69507921_7.jpg
                 ImageID-69534286_1.jpg
                 ImageID-69611658_1.jpg
+                ImageID-69528139_2.jpg
+                ImageID-69616854_2.jpg
+                ImageID-69539780_1_1_2.jpg
+                ImageID-69527447_2.jpg
+                ImageID-70032310.jpg
+                ImageID-69507921_3_aligned.jpg
+                ImageID-69534286_3.jpg
+                ImageID-69507921_5.jpg
+                ImageID-69541897_6.jpg
+                ImageID-69525587_1_aligned.jpg
+                ImageID-69515661_3.jpg
+                ImageID-69515661_2.jpg
+                ImageID-69525385_6.jpg
+                ImageID-69526808_6.jpg
+                ImageID-69541897_7.jpg
                 ImageID-69534286_2.jpg
+                ImageID-69507921_4.jpg
+                ImageID-69525385_5_aligned.jpg
+                ImageID-69616854_1.jpg
+                ImageID-69528139_1.jpg
+                ImageID-69527447_3.jpg
+                ImageID-69539780_1_1_3.jpg
         templates/
             base.html
             model_list.html
             model_detail.html
+            model_review_images.html
             model_good_images.html
             run_list.html
             model_create.html
@@ -324,32 +512,25 @@ import cv2
 import numpy as np
 
 
-# Define regions (x1, y1, x2, y2)
-regions = {
-    'top_banner': (177, 142, 1092, 334),
-    'sim_cards': (172, 310, 508, 735),
-    'main_graphic': (523, 351, 1174, 814),
-}
+def align_and_crop_regions(input_image_path, model):
+    """
+    Align the input image with the template image from the model, check the alignment
+    by cropping regions, and return the aligned image. The aligned image is saved, but
+    the cropped regions are only processed in memory and not saved.
+    """
+    # Get the local template image path
+    template_path = model.get_template_image_path()
 
-def align_and_crop_regions(input_image_path, output_messages, upload_folder):
-    output_messages.append("Starting alignment process...")
+    if not template_path:
+        raise ValueError("Template image path not found in the model.")
 
-    # Get the absolute path of the app's root directory
-    app_root = os.path.dirname(os.path.abspath(__file__))
-
-    # Load images
-    template_path = os.path.join(app_root, 'template.jpg')
     template = cv2.imread(template_path)
     input_image = cv2.imread(input_image_path)
 
-    if template is None:
-        output_messages.append(f"Error loading template image from {template_path}")
-        return None, None
-    if input_image is None:
-        output_messages.append(f"Error loading input image from {input_image_path}")
-        return None, None
+    if template is None or input_image is None:
+        raise ValueError("Either template or input image could not be loaded.")
 
-    # Convert to grayscale
+    # Convert images to grayscale
     gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     gray_input = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
 
@@ -365,67 +546,58 @@ def align_and_crop_regions(input_image_path, output_messages, upload_folder):
     flann = cv2.FlannBasedMatcher(index_params, search_params)
     matches = flann.knnMatch(descriptors_template, descriptors_input, k=2)
 
-    # Store good matches using Lowe's ratio test
+    # Apply Lowe's ratio test
     good_matches = [m for m, n in matches if m.distance < 0.7 * n.distance]
 
-    # Extract matched points and compute homography
     if len(good_matches) > 10:
+        # Extract matched points
         src_pts = np.float32([keypoints_template[m.queryIdx].pt for m in good_matches]).reshape(-1, 1, 2)
         dst_pts = np.float32([keypoints_input[m.trainIdx].pt for m in good_matches]).reshape(-1, 1, 2)
 
-        # Compute Homography
+        # Compute homography
         H, mask = cv2.findHomography(dst_pts, src_pts, cv2.RANSAC, 5.0)
 
-        # Warp the input image to align with the template
+        # Align the input image
         height, width, channels = template.shape
         aligned_image = cv2.warpPerspective(input_image, H, (width, height))
 
-        # Save aligned image
-        output_aligned_path = os.path.join(upload_folder, 'aligned.jpg')
-        cv2.imwrite(output_aligned_path, aligned_image)
-
+        # Process the regions (only in-memory, no saving)
         max_vals = []
-        output_messages.append("Cropping regions...")
+        for region in model.regions:
+            x1, y1, x2, y2 = region.x1, region.y1, region.x2, region.y2
 
-        # Crop and save each region
-        for region_name, (x1, y1, x2, y2) in regions.items():
-            # Crop the region from the aligned image
+            # Ensure coordinates are ordered correctly
+            x1, x2 = min(x1, x2), max(x1, x2)
+            y1, y2 = min(y1, y2), max(y1, y2)
+
             aligned_crop = aligned_image[y1:y2, x1:x2]
-
-            # Create directory for region if it doesn't exist
-            region_dir = os.path.join(upload_folder, 'regions', region_name)
-            if not os.path.exists(region_dir):
-                os.makedirs(region_dir)
-
-            # Save cropped region as 'input.jpg'
-            cropped_image_path = os.path.join(region_dir, 'input.jpg')
-            cv2.imwrite(cropped_image_path, aligned_crop)
-            output_messages.append(f"Cropped and saved region '{region_name}'.")
-
-            # Check for alignment success
             template_crop = template[y1:y2, x1:x2]
 
-            # Convert crops to grayscale
+            # Check if aligned_crop is valid
+            if aligned_crop is None or aligned_crop.size == 0:
+                raise ValueError(f"Failed to load or process image: {input_image_path}")
+
+            # Convert to grayscale for matching
             aligned_crop_gray = cv2.cvtColor(aligned_crop, cv2.COLOR_BGR2GRAY)
             template_crop_gray = cv2.cvtColor(template_crop, cv2.COLOR_BGR2GRAY)
 
             # Perform template matching
             match_result = cv2.matchTemplate(aligned_crop_gray, template_crop_gray, cv2.TM_CCOEFF_NORMED)
-
-            # Get the match score
             _, max_val, _, _ = cv2.minMaxLoc(match_result)
             max_vals.append(max_val)
 
-        # Check if the maximum of the max_vals is less than 0.40
-        if max(max_vals) < 0.40:
-            return None, None
+        # Check if alignment was successful based on match scores
+        print(input_image_path, max_vals)
+        if max(max_vals) > 0:
+            return None  # Alignment failed
         else:
-            output_messages.append("Alignment successful.")
-            # Return the homography matrix and input image dimensions
-            input_image_shape = input_image.shape
-            return H, input_image_shape
-    else:
-        return None, None
+            # Save the aligned image
+            aligned_image_name = os.path.splitext(os.path.basename(input_image_path))[0] + '_aligned.jpg'
+            aligned_image_path = os.path.join('app/static/uploads', aligned_image_name)
+            cv2.imwrite(aligned_image_path, aligned_image)
+
+            return aligned_image_path
+    return None
 
 
 ##################################
@@ -433,18 +605,28 @@ def align_and_crop_regions(input_image_path, output_messages, upload_folder):
 ##################################
 from . import db
 from datetime import datetime
-
+import os
+from flask import current_app
 
 class Model(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.Text, nullable=True)
-    template_image_url = db.Column(db.String(256))
-    good_image_1_url = db.Column(db.String(256))
-    good_image_2_url = db.Column(db.String(256))
-    good_image_3_url = db.Column(db.String(256))
-    good_image_4_url = db.Column(db.String(256))
-    good_image_5_url = db.Column(db.String(256))
+    template_image_filename = db.Column(db.String(256))  # Changed to store only filename
+
+    good_image_1_filename = db.Column(db.String(256))
+    good_image_2_filename = db.Column(db.String(256))
+    good_image_3_filename = db.Column(db.String(256))
+    good_image_4_filename = db.Column(db.String(256))
+    good_image_5_filename = db.Column(db.String(256))
+
+    # Aligned image paths
+    good_image_1_aligned_filename = db.Column(db.String(256))
+    good_image_2_aligned_filename = db.Column(db.String(256))
+    good_image_3_aligned_filename = db.Column(db.String(256))
+    good_image_4_aligned_filename = db.Column(db.String(256))
+    good_image_5_aligned_filename = db.Column(db.String(256))
+
     status = db.Column(db.String(64), default='setup')  # 'setup', 'ready', 'running'
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
@@ -452,6 +634,15 @@ class Model(db.Model):
     regions = db.relationship('ModelRegion', backref='model', lazy=True)
     runs = db.relationship('Run', backref='model', lazy=True)
 
+    def get_image_path(self, image_filename):
+        """Get the full local path for an image."""
+        if image_filename:
+            return os.path.join(current_app.config['UPLOADED_IMAGES_DEST'], image_filename)
+        return None
+
+    def get_template_image_path(self):
+        """Return the full path to the template image."""
+        return self.get_image_path(self.template_image_filename)
 
 
 
@@ -459,17 +650,39 @@ class ModelRegion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     model_id = db.Column(db.Integer, db.ForeignKey('model.id'), nullable=False)
     name = db.Column(db.String(256))
+
+    model_pkl = db.Column(db.String(256), nullable=True)
+
+    fail_description = db.Column(db.Text, nullable=True)  # Added
+    pass_description = db.Column(db.Text, nullable=True)  # Added
+
     x1 = db.Column(db.Integer, nullable=False)
     y1 = db.Column(db.Integer, nullable=False)
     x2 = db.Column(db.Integer, nullable=False)
     y2 = db.Column(db.Integer, nullable=False)
-    bad_image_1_url = db.Column(db.String(256))
-    bad_image_2_url = db.Column(db.String(256))
-    bad_image_3_url = db.Column(db.String(256))
-    bad_image_4_url = db.Column(db.String(256))
-    bad_image_5_url = db.Column(db.String(256))
+
+    # Store filenames instead of URLs for bad images
+    bad_image_1_filename = db.Column(db.String(256))
+    bad_image_2_filename = db.Column(db.String(256))
+    bad_image_3_filename = db.Column(db.String(256))
+    bad_image_4_filename = db.Column(db.String(256))
+    bad_image_5_filename = db.Column(db.String(256))
+
+    # Store filenames instead of URLs for aligned bad images
+    bad_image_1_aligned_filename = db.Column(db.String(256))
+    bad_image_2_aligned_filename = db.Column(db.String(256))
+    bad_image_3_aligned_filename = db.Column(db.String(256))
+    bad_image_4_aligned_filename = db.Column(db.String(256))
+    bad_image_5_aligned_filename = db.Column(db.String(256))
+
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
+
+    def get_bad_image_path(self, image_filename):
+        """Get the full local path for a bad image."""
+        if image_filename:
+            return os.path.join(current_app.config['UPLOADED_IMAGES_DEST'], image_filename)
+        return None
 
 
 class Run(db.Model):
@@ -526,9 +739,12 @@ def create_app():
 ### File: app/routes.py
 ##################################
 from flask import Blueprint, render_template, request, redirect, url_for, session
+
+from .align import align_and_crop_regions
 from .models import db, Model, ModelRegion, Run, Inspection
 from . import images
 import boto3
+import os
 
 main = Blueprint('main', __name__)
 
@@ -568,7 +784,6 @@ def model_list():
     return render_template('model_list.html', model_data=model_data)
 
 
-
 @main.route('/models/new', methods=['GET', 'POST'])
 def model_create():
     if request.method == 'POST':
@@ -580,47 +795,45 @@ def model_create():
         db.session.commit()
 
         session['model_id'] = new_model.id
-        return redirect(url_for('main.upload_template_image'))
+        return redirect(url_for('main.upload_template_image', model_id=new_model.id))
 
     return render_template('model_create.html')
 
 
-@main.route('/models/upload_template_image', methods=['GET', 'POST'])
-def upload_template_image():
-    model_id = session.get('model_id')
-    if not model_id:
+@main.route('/models/upload_template_image/<int:model_id>', methods=['GET', 'POST'])
+def upload_template_image(model_id):
+    model = Model.query.get(model_id)
+    if not model:
         return redirect(url_for('main.model_create'))
+    session['model_id'] = model_id
 
     if request.method == 'POST' and 'template_image' in request.files:
-        filename = images.save(request.files['template_image'])
-        file_url = images.url(filename)
-        model = Model.query.get(model_id)
-        model.template_image_url = file_url
+        filename = images.save(request.files['template_image'])  # Save only the filename
+        model.template_image_filename = filename
         db.session.commit()
 
-        return redirect(url_for('main.upload_good_images'))
+        return redirect(url_for('main.upload_good_images', model_id=model_id))
 
-    return render_template('model_template_image.html')
+    return render_template('model_template_image.html', model=model)
 
 
-@main.route('/models/upload_good_images', methods=['GET', 'POST'])
-def upload_good_images():
-    model_id = session.get('model_id')
-    if not model_id:
+@main.route('/models/upload_good_images/<int:model_id>', methods=['GET', 'POST'])
+def upload_good_images(model_id):
+    model = Model.query.get(model_id)
+    if not model:
         return redirect(url_for('main.model_create'))
+    session['model_id'] = model_id
 
     if request.method == 'POST':
         for i in range(1, 6):
             if f'good_image_{i}' in request.files:
-                filename = images.save(request.files[f'good_image_{i}'])
-                file_url = images.url(filename)
-                model = Model.query.get(model_id)
-                setattr(model, f'good_image_{i}_url', file_url)
+                filename = images.save(request.files[f'good_image_{i}'])  # Store only filename
+                setattr(model, f'good_image_{i}_filename', filename)
         db.session.commit()
 
-        return redirect(url_for('main.draw_regions'))
+        return redirect(url_for('main.draw_regions', model_id=model_id))
 
-    return render_template('model_good_images.html')
+    return render_template('model_good_images.html', model=model)
 
 
 @main.route('/models/upload_region_images', methods=['POST'])
@@ -633,32 +846,41 @@ def upload_region_images():
     y1 = request.form['y1']
     x2 = request.form['x2']
     y2 = request.form['y2']
-    region_name = request.form['region_name']  # Get the region name
+    region_name = request.form['region_name']
+    fail_description = request.form['fail_description']
+    pass_description = request.form['pass_description']
 
     bad_images = []
     for i in range(1, 6):
         if f'bad_image_{i}' in request.files:
             filename = images.save(request.files[f'bad_image_{i}'])
-            file_url = images.url(filename)
-            bad_images.append(file_url)
+            bad_images.append(filename)
 
-    # Create new region with name
     new_region = ModelRegion(model_id=model_id, x1=x1, y1=y1, x2=x2, y2=y2, name=region_name)
-    for i, img_url in enumerate(bad_images, 1):
-        setattr(new_region, f'bad_image_{i}_url', img_url)
+
+    # Assign the saved filenames to the new region
+    for i, filename in enumerate(bad_images, 1):
+        setattr(new_region, f'bad_image_{i}_filename', filename)
+
     db.session.add(new_region)
     db.session.commit()
 
-    return redirect(url_for('main.draw_regions'))
-
-
-@main.route('/models/draw_regions', methods=['GET', 'POST'])
-def draw_regions():
-    model_id = session.get('model_id')
-    if not model_id:
-        return redirect(url_for('main.model_create'))
-
+    # Save fail and pass descriptions for the model
     model = Model.query.get(model_id)
+    model.fail_description = fail_description
+    model.pass_description = pass_description
+    db.session.commit()
+
+    return redirect(url_for('main.draw_regions', model_id=model_id))
+
+
+@main.route('/models/draw_regions/<int:model_id>', methods=['GET', 'POST'])
+def draw_regions(model_id):
+    model = Model.query.get(model_id)
+    if not model:
+        return redirect(url_for('main.model_create'))
+    session['model_id'] = model_id
+
     return render_template('model_regions.html', model=model)
 
 
@@ -675,41 +897,154 @@ def get_region_data(region_id):
         'bad_image_2_url': region.bad_image_2_url,
         'bad_image_3_url': region.bad_image_3_url,
         'bad_image_4_url': region.bad_image_4_url,
-        'bad_image_5_url': region.bad_image_5_url
+        'bad_image_5_url': region.bad_image_5_url,
+        'fail_description': region.fail_description,
+        'pass_description': region.pass_description
     }
     return region_data
 
 
-
-@main.route('/models/finish_regions', methods=['GET', 'POST'])
+@main.route('/models/finish_regions', methods=['POST'])
 def finish_regions():
     model_id = session.get('model_id')
     if not model_id:
         return redirect(url_for('main.model_create'))
 
     model = Model.query.get(model_id)
+
+    # Process good images and align them
+    for i in range(1, 6):
+        good_image_filename = getattr(model, f'good_image_{i}_filename')  # Now fetching filename
+        if good_image_filename:
+            good_image_path = os.path.join('app/static/uploads', good_image_filename)
+            aligned_image_path = align_and_crop_regions(good_image_path, model)
+            if aligned_image_path:
+                setattr(model, f'good_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+            else:
+                setattr(model, f'good_image_{i}_aligned_filename', None)
+
+    # Process bad images for each region and align them
+    for region in model.regions:
+        for i in range(1, 6):
+            bad_image_filename = getattr(region, f'bad_image_{i}_filename')  # Now fetching filename
+            if bad_image_filename:
+                bad_image_path = os.path.join('app/static/uploads', bad_image_filename)
+                aligned_image_path = align_and_crop_regions(bad_image_path, model)
+                if aligned_image_path:
+                    setattr(region, f'bad_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+                else:
+                    setattr(region, f'bad_image_{i}_aligned_filename', None)
+
+    db.session.commit()
+
+    return redirect(url_for('main.review_images', model_id=model.id))
+
+
+@main.route('/models/<int:model_id>/review_images', methods=['GET', 'POST'])
+def review_images(model_id):
+    model = Model.query.get_or_404(model_id)
+
+    # If new images were uploaded, handle alignment
+    if request.method == 'POST':
+        for i in range(1, 6):
+            if f'good_image_{i}' in request.files:
+                filename = images.save(request.files[f'good_image_{i}'])
+                setattr(model, f'good_image_{i}_filename', filename)  # Save the filename instead of URL
+                good_image_path = os.path.join('app/static/uploads', filename)
+                aligned_image_path = align_and_crop_regions(good_image_path, model)
+                if aligned_image_path:
+                    setattr(model, f'good_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+                else:
+                    setattr(model, f'good_image_{i}_aligned_filename', None)
+
+        for region in model.regions:
+            for i in range(1, 6):
+                if f'bad_image_{region.id}_{i}' in request.files:
+                    filename = images.save(request.files[f'bad_image_{region.id}_{i}'])
+                    setattr(region, f'bad_image_{i}_filename', filename)  # Save the filename instead of URL
+                    bad_image_path = os.path.join('app/static/uploads', filename)
+                    aligned_image_path = align_and_crop_regions(bad_image_path, model)
+                    if aligned_image_path:
+                        setattr(region, f'bad_image_{i}_aligned_filename', os.path.basename(aligned_image_path))  # Save filename
+                    else:
+                        setattr(region, f'bad_image_{i}_aligned_filename', None)
+
+        db.session.commit()
+
+    # Check if all images are aligned
+    all_images_aligned = True
+    missing_good_images = {}
+    for i in range(1, 6):
+        aligned_image = getattr(model, f'good_image_{i}_aligned_filename')
+        if not aligned_image:
+            missing_good_images[f'good_image_{i}'] = True
+            all_images_aligned = False
+
+    missing_bad_images_by_region = {}
+    for region in model.regions:
+        missing_bad_images = {}
+        for i in range(1, 6):
+            aligned_image = getattr(region, f'bad_image_{i}_aligned_filename')
+            if not aligned_image:
+                missing_bad_images[f'bad_image_{i}'] = True
+                all_images_aligned = False
+        missing_bad_images_by_region[region.name] = missing_bad_images
+
+    if all_images_aligned:
+        return render_template('model_review_images.html', all_images_aligned=True, model=model)
+
+    return render_template('model_review_images.html', model=model, missing_good_images=missing_good_images, missing_bad_images_by_region=missing_bad_images_by_region, all_images_aligned=False)
+
+
+@main.route('/models/finish/<int:model_id>', methods=['POST'])
+def finish_model(model_id):
+    # Logic for finishing the model setup
+    model = Model.query.get_or_404(model_id)
+
+    # Mark the model as 'ready'
     model.status = 'ready'
     db.session.commit()
 
-    session.pop('model_id', None)
-    return redirect(url_for('main.model_detail', model_id=model_id))
+    return redirect(url_for('main.model_list'))
 
 
 @main.route('/models/<int:model_id>')
 def model_detail(model_id):
     model = Model.query.get_or_404(model_id)
 
-    # If the model is still being set up, determine which step to send the user to
+    # If the model is still in setup, redirect to the relevant step
     if model.status == 'setup':
-        if not model.template_image_url:
+        if not model.template_image_filename:
             return redirect(url_for('main.upload_template_image', model_id=model_id))
-        elif not all([model.good_image_1_url, model.good_image_2_url, model.good_image_3_url, model.good_image_4_url, model.good_image_5_url]):
+        elif not all([
+            model.good_image_1_filename,
+            model.good_image_2_filename,
+            model.good_image_3_filename,
+            model.good_image_4_filename,
+            model.good_image_5_filename
+        ]):
             return redirect(url_for('main.upload_good_images', model_id=model_id))
         else:
-            return redirect(url_for('main.draw_regions', model_id=model_id))
+            # Check if all good images have aligned versions
+            all_images_aligned = any([
+                getattr(model, f'good_image_{i}_aligned_filename') for i in range(1, 6)
+            ])
+            if all_images_aligned:
+                return redirect(url_for('main.review_images', model_id=model_id))
+            else:
+                return redirect(url_for('main.draw_regions', model_id=model_id))
 
-    # If the model is ready or running, show the model detail page
-    return render_template('model_detail.html', model=model)
+    # Generate full image URLs/paths for template and good images
+    template_image_url = model.get_image_path(model.template_image_filename)
+    good_images_urls = [
+        model.get_image_path(model.good_image_1_filename),
+        model.get_image_path(model.good_image_2_filename),
+        model.get_image_path(model.good_image_3_filename),
+        model.get_image_path(model.good_image_4_filename),
+        model.get_image_path(model.good_image_5_filename),
+    ]
+
+    return render_template('model_detail.html', model=model, template_image_url=template_image_url)
 
 
 @main.route('/models/<int:model_id>/delete', methods=['POST'])
@@ -803,7 +1138,7 @@ h3 {
             </div>
         </nav>
     </header>
-    <div class="container mt-4">
+    <div class="container my-4 pb-5">
         {% block content %}{% endblock %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -886,35 +1221,31 @@ h3 {
 {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-        <h2>Model: {{ model.name }}</h2>
-        <p><strong>Status:</strong>
-            {% if model.status == 'ready' %}
-                <span class="badge bg-success">Ready</span>
-            {% elif model.status == 'setup' %}
-                <span class="badge bg-secondary">Setup</span>
-            {% elif model.status == 'running' %}
-                <span class="badge bg-warning text-dark">Running</span>
-            {% endif %}
-        </p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Model: {{ model.name }}</h2>
+            <p><strong>Status:</strong>
+                {% if model.status == 'ready' %}
+                    <span class="badge bg-success">Ready</span>
+                {% elif model.status == 'setup' %}
+                    <span class="badge bg-secondary">Setup</span>
+                {% elif model.status == 'running' %}
+                    <span class="badge bg-warning text-dark">Running</span>
+                {% endif %}
+            </p>
+            <p><strong>Description: </strong>{{ model.description }}</p>
+        </div>
+        <div class="d-flex flex-column">
+            <a href="#" class="btn btn-primary mb-2">Test on Image</a>
+            <a href="{{ url_for('main.run_model', model_id=model.id) }}" class="btn btn-primary">Run on S3</a>
+        </div>
     </div>
-    <div class="d-flex flex-column">
-        <a href="#" class="btn btn-primary mb-2">Test on Image</a>
-        <a href="{{ url_for('main.run_model', model_id=model.id) }}" class="btn btn-primary">Run on S3</a>
-    </div>
-</div>
-
-{% if model.status == 'setup' %}
-    <p>The model setup is incomplete. You can continue setting up the model below:</p>
-    <a href="{{ url_for('main.upload_template_image') }}" class="btn btn-warning">Continue Setup</a>
-{% else %}
-    <p><strong>Description: </strong>{{ model.description }}</p>
 
     <!-- Uploaded Images Section -->
     <div class="p-3 rounded mb-3" style="text-align:center;">
         <h3 style="text-align:center;">Template Image</h3>
-        <img src="{{ model.template_image_url }}" class="img-thumbnail" alt="Template Image"
+        <img src="{{ url_for('static', filename='uploads/' + model.template_image_filename) }}"
+             class="img-thumbnail" alt="Template Image"
              style="width: 500px;"><br><br>
     </div>
 
@@ -922,8 +1253,14 @@ h3 {
     <div class="bg-light p-3 rounded mb-3" style="text-align:center;">
         <h3 style="text-align:center;">Good Images</h3>
         {% for i in range(1, 6) %}
-            <img src="{{ getattr(model, 'good_image_' ~ i ~ '_url') }}" class="img-thumbnail"
-                 alt="Good Image {{ i }}" style="width: 150px;">
+            {% set good_image_filename = getattr(model, 'good_image_' ~ i ~ '_filename') %}
+            {% if good_image_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + good_image_filename) }}"
+                     class="img-thumbnail"
+                     alt="Good Image {{ i }}" style="width: 150px;">
+            {% else %}
+                <p>Good Image {{ i }} not uploaded</p>
+            {% endif %}
         {% endfor %}
     </div>
 
@@ -936,15 +1273,88 @@ h3 {
             <div class="mt-2" style="text-align:center;">
                 <h5>Bad Images</h5>
                 {% for i in range(1, 6) %}
-                    <img src="{{ getattr(region, 'bad_image_' ~ i ~ '_url') }}" class="img-thumbnail"
-                         alt="Bad Image {{ i }}" style="width: 150px;">
+                    {% set bad_image_filename = getattr(region, 'bad_image_' ~ i ~ '_filename') %}
+                    {% if bad_image_filename %}
+                        <img src="{{ url_for('static', filename='uploads/' + bad_image_filename) }}"
+                             class="img-thumbnail"
+                             alt="Bad Image {{ i }}" style="width: 150px;">
+                    {% else %}
+                        <p>Bad Image {{ i }} not uploaded</p>
+                    {% endif %}
                 {% endfor %}
             </div>
-            <br/>
-            <br/>
+            <br/><br/>
         {% endfor %}
     </div>
-{% endif %}
+{% endblock %}
+
+
+##################################
+### File: app/templates/model_review_images.html
+##################################
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Step 5/5: Review Images</h2>
+
+    {% if all_images_aligned %}
+        <p>All images aligned. Model is ready!</p>
+        <form method="POST" action="{{ url_for('main.finish_model', model_id=model.id) }}">
+            <button type="submit" class="btn btn-success">Finish</button>
+        </form>
+
+    {% else %}
+        <p style="text-align:center; color:red;">Not all images could align onto the template - please upload new
+            images</p>
+
+        <h3>Good Images</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% for i in range(1, 6) %}
+                <div class="mb-3">
+                    {% set good_image_filename = getattr(model, 'good_image_' ~ i ~ '_filename') %}
+                    {% set aligned_good_image_filename = getattr(model, 'good_image_' ~ i ~ '_aligned_filename') %}
+
+                    {% if not aligned_good_image_filename %}
+
+                        <p>Good Image {{ i }} (Original)</p>
+                        <img src="{{ url_for('static', filename='uploads/' + good_image_filename) }}"
+                             class="img-thumbnail"
+                             alt="Good Image {{ i }}" style="width: 150px;">
+
+                        <p style="color: red;">Alignment Failed for Good Image {{ i }}</p>
+                        <label for="good_image_{{ i }}">Upload new Good Image {{ i }}</label>
+                        <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control"
+                               accept="image/*" style="max-width:300px;">
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <h3>Bad Images</h3>
+            {% for region in model.regions %}
+                <h4>Region: {{ region.name }}</h4>
+                {% for i in range(1, 6) %}
+                    <div class="mb-3">
+                        {% set bad_image_filename = getattr(region, 'bad_image_' ~ i ~ '_filename') %}
+                        {% set aligned_bad_image_filename = getattr(region, 'bad_image_' ~ i ~ '_aligned_filename') %}
+
+                        {% if not aligned_bad_image_filename %}
+                            <p>Bad Image {{ i }} (Original)</p>
+                            <img src="{{ url_for('static', filename='uploads/' + bad_image_filename) }}"
+                                 class="img-thumbnail"
+                                 alt="Bad Image {{ i }}" style="width: 150px;">
+
+                            <p style="color: red;">Alignment Failed for Bad Image {{ i }}</p>
+                            <label for="bad_image_{{ region.id }}_{{ i }}">Upload new Bad Image {{ i }}</label>
+                            <input type="file" id="bad_image_{{ region.id }}_{{ i }}"
+                                   name="bad_image_{{ region.id }}_{{ i }}" class="form-control" accept="image/*"  style="max-width:300px;">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Upload Replacement Images</button>
+        </form>
+    {% endif %}
 {% endblock %}
 
 
@@ -954,12 +1364,12 @@ h3 {
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 3/4: Upload Good Images</h2>
-<form method="POST" action="{{ url_for('main.upload_good_images') }}" enctype="multipart/form-data">
+<h2>Step 3/5: Upload Good Images</h2>
+<form method="POST" action="{{ url_for('main.upload_good_images', model_id=model.id) }}" enctype="multipart/form-data">
     {% for i in range(1, 6) %}
         <div class="mb-3">
             <label for="good_image_{{ i }}" class="form-label">Choose Good Image {{ i }}</label>
-            <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})">
+            <input type="file" id="good_image_{{ i }}" name="good_image_{{ i }}" class="form-control" accept="image/*" onchange="previewImage(event, {{ i }})" style="max-width:300px;">
             <img id="imagePreview_{{ i }}" style="max-width: 300px; margin-top: 20px;">
         </div>
     {% endfor %}
@@ -1012,7 +1422,7 @@ h3 {
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 1/4: Create Model</h2>
+<h2>Step 1/5: Create Model</h2>
 <form method="POST" action="{{ url_for('main.model_create') }}">
     <div class="mb-3">
         <label for="name" class="form-label">Model Name</label>
@@ -1033,8 +1443,8 @@ h3 {
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Step 2/4: Upload Template Image</h2>
-<form method="POST" action="{{ url_for('main.upload_template_image') }}" enctype="multipart/form-data">
+<h2>Step 2/5: Upload Template Image</h2>
+<form method="POST" action="{{ url_for('main.upload_template_image', model_id=model.id) }}" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="template_image" class="form-label">Choose Template Image</label>
         <input type="file" id="template_image" name="template_image" class="form-control" accept="image/*" onchange="previewImage(event)" required>
@@ -1059,8 +1469,8 @@ h3 {
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Step 4/4: Define Bad Regions</h2>
-    <p>Draw regions on the template image, name them, and upload bad images for each region.</p>
+    <h2>Step 4/5: Define Bad Regions</h2>
+    <h4 class="py-5">Draw regions on the template image, name them, and upload bad image examples for each region. You should have a region for each key component of the thing being inspected.</h4>
 
     <div class="row">
         <!-- Sidebar for region names and uploading bad images -->
@@ -1090,10 +1500,22 @@ h3 {
                 <input type="hidden" name="y1" id="y1">
                 <input type="hidden" name="x2" id="x2">
                 <input type="hidden" name="y2" id="y2">
+
                 <h4>Region Name</h4>
                 <div class="mb-3">
                     <input type="text" id="region_name" name="region_name" class="form-control" required>
                 </div>
+
+                <h4>Fail Description</h4>
+                <div class="mb-3">
+                    <textarea id="fail_description" name="fail_description" class="form-control" required placeholder="Describe what FAIL looks like in this region"></textarea>
+                </div>
+
+                <h4>Pass Description</h4>
+                <div class="mb-3">
+                    <textarea id="pass_description" name="pass_description" class="form-control" required placeholder="Describe what PASS looks like in this region"></textarea>
+                </div>
+
                 <h4>Upload Bad Images for the Region:</h4>
                 {% for i in range(1, 6) %}
                     <div class="mb-3">
@@ -1103,194 +1525,179 @@ h3 {
                         <img id="badImagePreview_{{ i }}" style="max-width: 100px; margin-top: 10px; display:none;">
                     </div>
                 {% endfor %}
-                <div id="error-message" style="color: red; display: none;">Please upload all 5 bad images.</div>
+
                 <button type="submit" class="btn btn-primary">Save Region</button>
                 <button type="button" class="btn btn-danger" id="resetRegion">Cancel</button>
             </form>
 
             <!-- Button to save all model regions -->
             <form method="POST" action="{{ url_for('main.finish_regions') }}">
-                <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;">Save Model
-                    Regions
-                </button>
+                <button id="saveRegionsBtn" class="btn btn-success btn-block mt-3" style="width: 100%;" disabled>Save Model Regions</button>
             </form>
         </div>
 
         <!-- Canvas for drawing the regions -->
         <div class="col-md-8">
-            <img id="templateImage" src="{{ model.template_image_url }}" alt="Template Image" class="img-fluid mb-3"
-                 style="display:none;">
+            <img id="templateImage" src="{{ url_for('static', filename='uploads/' ~ model.template_image_filename) }}"
+                 alt="Template Image" class="img-fluid mb-3" style="display:none;">
             <canvas id="templateCanvas" class="border"></canvas>
         </div>
     </div>
 
     <script>
+        // Initialize canvas and drawing variables
+        const canvas = document.getElementById('templateCanvas');
+        const ctx = canvas.getContext('2d');
+        let startX, startY, isDrawing = false;
+        let regions = {{ model.regions|length }};  // Initialize regions count based on existing regions
+        let currentRegion = null;
 
-const canvas = document.getElementById('templateCanvas');
-const ctx = canvas.getContext('2d');
-let startX, startY, isDrawing = false;
-let regions = [];
-let currentRegion = null;
+        const templateImage = document.getElementById('templateImage');
+        const regionForm = document.getElementById('regionForm');
+        const regionList = document.getElementById('regionList');
+        const addRegionBtn = document.getElementById('addRegionBtn');
+        const drawInstruction = document.getElementById('drawInstruction');
+        const saveRegionsBtn = document.getElementById('saveRegionsBtn');  // Get the Save Model Regions button
 
-const templateImage = document.getElementById('templateImage');
-const regionForm = document.getElementById('regionForm');
-const regionList = document.getElementById('regionList');
-const addRegionBtn = document.getElementById('addRegionBtn');
-const drawInstruction = document.getElementById('drawInstruction');
-const saveRegionsBtn = document.getElementById('saveRegionsBtn');  // Get the Save Model Regions button
+        // Initially disable drawing and the save button
+        let drawingEnabled = false;
+        let selectedRegionId = null;
 
-// Initially disable drawing
-let drawingEnabled = false;
-let selectedRegionId = null;
+        // Disable the "Save Model Regions" button initially if no regions exist
+        if (regions === 0) {
+            saveRegionsBtn.disabled = true;
+            saveRegionsBtn.style.display = 'none';  // Hide if no regions exist
+        } else {
+            saveRegionsBtn.disabled = false;
+            saveRegionsBtn.style.display = 'block';  // Show if regions exist
+        }
 
-// Hide the "Save Model Regions" button initially
-saveRegionsBtn.style.display = 'block';  // Button is visible initially
+        // Draw the template image on the canvas
+        templateImage.onload = function () {
+            canvas.width = templateImage.width;
+            canvas.height = templateImage.height;
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            templateImage.style.display = 'none'; // hide the actual image element
+            drawRegions(); // Draw existing regions on load
+        };
 
-// Draw the template image on the canvas
-templateImage.onload = function () {
-    canvas.width = templateImage.width;
-    canvas.height = templateImage.height;
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-    templateImage.style.display = 'none'; // hide the actual image element
-};
+        templateImage.src = templateImage.src; // Trigger the image load
 
-templateImage.src = templateImage.src; // Trigger the image load
+        // Drawing functionality
+        canvas.addEventListener('mousedown', (e) => {
+            if (!drawingEnabled) return; // Only draw after clicking "Add Region"
+            isDrawing = true;
+            [startX, startY] = [e.offsetX, e.offsetY];
+        });
 
-// Drawing functionality
-canvas.addEventListener('mousedown', (e) => {
-    if (!drawingEnabled) return; // Only draw after clicking "Add Region"
-    isDrawing = true;
-    [startX, startY] = [e.offsetX, e.offsetY];
-});
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
+            drawRegions(); // Redraw saved regions
+            ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY); // Draw the new region being added
+        });
 
-canvas.addEventListener('mousemove', (e) => {
-    if (!isDrawing) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
-    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-    ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY);
-});
-
-canvas.addEventListener('mouseup', (e) => {
-    if (!drawingEnabled) return;
-    isDrawing = false;
-    document.getElementById('x1').value = startX;
-    document.getElementById('y1').value = startY;
-    document.getElementById('x2').value = e.offsetX;
-    document.getElementById('y2').value = e.offsetY;
-    regionForm.style.display = 'block';
-    drawInstruction.style.display = 'none'; // Hide "Draw region" message
-    regions.push({x1: startX, y1: startY, x2: e.offsetX, y2: e.offsetY});
-    drawingEnabled = false;
-    addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
-    saveRegionsBtn.style.display = 'none';  // Hide "Save Model Regions" button while adding or editing
-});
-
-// Draw a single region
-function drawRegion(x1, y1, x2, y2, highlight = false) {
-    ctx.strokeStyle = highlight ? 'red' : 'black';
-    ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
-}
-
-// Add new region
-function addNewRegion() {
-    // Reset the form fields
-    regionForm.reset();
-
-    // Clear image previews
-    for (let i = 1; i <= 5; i++) {
-        const imgPreview = document.getElementById(`badImagePreview_${i}`);
-        imgPreview.src = '';
-        imgPreview.style.display = 'none';
-    }
-
-    regionForm.style.display = 'none'; // Hide the form initially
-    drawInstruction.style.display = 'block'; // Show "Draw region on the image"
-    addRegionBtn.style.display = 'none'; // Hide "Add Region" button
-    saveRegionsBtn.style.display = 'none';  // Hide "Save Model Regions" button while adding a new region
-    drawingEnabled = true;
-
-    // Clear selection in the sidebar
-    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-
-    // Deselect any previously selected region
-    selectedRegionId = null;
-}
-
-// Deselect region and hide form
-function deselectRegion() {
-    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-    regionForm.style.display = 'none'; // Hide the form
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
-    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-    selectedRegionId = null;
-
-    // Show the "Save Model Regions" button again after deselecting
-    saveRegionsBtn.style.display = 'block';
-}
-
-// Populate form data with region information using AJAX
-function populateRegionForm(regionId) {
-    fetch(`/regions/${regionId}/data`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('x1').value = data.x1;
-            document.getElementById('y1').value = data.y1;
-            document.getElementById('x2').value = data.x2;
-            document.getElementById('y2').value = data.y2;
-            document.getElementById('region_name').value = data.name;
-
-            // Update image previews if available
-            for (let i = 1; i <= 5; i++) {
-                const imageUrl = data[`bad_image_${i}_url`];
-                const imgPreview = document.getElementById(`badImagePreview_${i}`);
-                if (imageUrl) {
-                    imgPreview.src = imageUrl;
-                    imgPreview.style.display = 'block';
-                } else {
-                    imgPreview.style.display = 'none';
-                }
-            }
+        canvas.addEventListener('mouseup', (e) => {
+            if (!drawingEnabled) return;
+            isDrawing = false;
+            document.getElementById('x1').value = startX;
+            document.getElementById('y1').value = startY;
+            document.getElementById('x2').value = e.offsetX;
+            document.getElementById('y2').value = e.offsetY;
             regionForm.style.display = 'block';
+            drawInstruction.style.display = 'none'; // Hide "Draw region" message
+            drawingEnabled = false;
+            addRegionBtn.style.display = 'none'; // Hide the "Add Region" button while adding
+            hideSaveRegionsButton(); // Hide the save button while adding a new region
+        });
 
-            // Hide "Save Model Regions" button while editing
-            saveRegionsBtn.style.display = 'none';
-        })
-        .catch(error => console.error('Error fetching region data:', error));
-}
+        // Draw all saved regions on the canvas
+        function drawRegions() {
+            {% for region in model.regions %}
+            drawRegion({{ region.x1 }}, {{ region.y1 }}, {{ region.x2 }}, {{ region.y2 }});
+            {% endfor %}
+        }
 
-// Select a region from the sidebar
-function selectRegion(regionId, x1, y1, x2, y2) {
-    // Check if the region is already selected
-    if (selectedRegionId === regionId) {
-        // If it's already selected, deselect it and hide the form
-        deselectRegion();
-        return;
-    }
+        // Draw a single region
+        function drawRegion(x1, y1, x2, y2, highlight = false) {
+            ctx.strokeStyle = highlight ? 'red' : 'black';
+            ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+        }
 
-    // Set this region as the selected one
-    selectedRegionId = regionId;
+        // Add new region
+        function addNewRegion() {
+            // Reset the form fields
+            regionForm.reset();
 
-    // Highlight the selected region in the list
-    document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
-    const selectedRegion = document.querySelector(`[data-region-id="${regionId}"]`);
-    selectedRegion.classList.add('active');
+            // Clear image previews
+            for (let i = 1; i <= 5; i++) {
+                const imgPreview = document.getElementById(`badImagePreview_${i}`);
+                imgPreview.src = '';
+                imgPreview.style.display = 'none';
+            }
 
-    // Clear the canvas and redraw all regions, highlighting the selected one
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height); // Redraw the image
-    regions.forEach(region => drawRegion(region.x1, region.y1, region.x2, region.y2)); // Redraw all regions
-    drawRegion(x1, y1, x2, y2, true); // Highlight the selected region
+            regionForm.style.display = 'none'; // Hide the form initially
+            drawInstruction.style.display = 'block'; // Show "Draw region on the image"
+            addRegionBtn.style.display = 'none'; // Hide "Add Region" button
+            drawingEnabled = true;
 
-    // Fetch region data and populate form
-    populateRegionForm(regionId);
-}
+            // Clear selection in the sidebar
+            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
 
-// Reset button logic
-document.getElementById('resetRegion').addEventListener('click', function () {
-    location.reload();
-});
+            // Deselect any previously selected region
+            selectedRegionId = null;
+
+            // Hide the save button while adding a new region
+            hideSaveRegionsButton();
+        }
+
+        // Deselect region and hide form
+        function deselectRegion() {
+            document.querySelectorAll('.list-group-item').forEach(item => item.classList.remove('active'));
+            regionForm.style.display = 'none'; // Hide the form
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            drawRegions(); // Redraw all regions
+            selectedRegionId = null;
+        }
+
+        // Enable the "Save Model Regions" button if at least one region exists
+        function updateSaveRegionsButton() {
+            if (regions > 0) {
+                saveRegionsBtn.disabled = false;
+                saveRegionsBtn.style.display = 'block';  // Show the button
+            } else {
+                hideSaveRegionsButton();
+            }
+        }
+
+        // Hide the "Save Model Regions" button
+        function hideSaveRegionsButton() {
+            saveRegionsBtn.disabled = true;
+            saveRegionsBtn.style.display = 'none';  // Hide the button
+        }
+
+        // Automatically zoom out until the entire canvas is visible
+        function autoZoomOutCanvas() {
+            const canvas = document.getElementById('templateCanvas');
+            const canvasContainer = canvas.parentElement;
+            const canvasWidth = canvas.width;
+            const canvasHeight = canvas.height;
+            const containerWidth = canvasContainer.clientWidth;
+            const containerHeight = canvasContainer.clientHeight;
+
+            let scaleFactor = Math.min(containerWidth / canvasWidth, containerHeight / canvasHeight);
+            if (scaleFactor < 1) {
+                document.body.style.transform = `scale(${scaleFactor})`;
+                document.body.style.transformOrigin = 'top left';
+            }
+        }
+
+        // Call the zoom out function after the canvas is loaded
+        window.onload = function () {
+            autoZoomOutCanvas();
+        };
 
     </script>
 

@@ -3,32 +3,25 @@ import cv2
 import numpy as np
 
 
-# Define regions (x1, y1, x2, y2)
-regions = {
-    'top_banner': (177, 142, 1092, 334),
-    'sim_cards': (172, 310, 508, 735),
-    'main_graphic': (523, 351, 1174, 814),
-}
+def align_and_crop_regions(input_image_path, model):
+    """
+    Align the input image with the template image from the model, check the alignment
+    by cropping regions, and return the aligned image. The aligned image is saved, but
+    the cropped regions are only processed in memory and not saved.
+    """
+    # Get the local template image path
+    template_path = model.get_template_image_path()
 
-def align_and_crop_regions(input_image_path, output_messages, upload_folder):
-    output_messages.append("Starting alignment process...")
+    if not template_path:
+        raise ValueError("Template image path not found in the model.")
 
-    # Get the absolute path of the app's root directory
-    app_root = os.path.dirname(os.path.abspath(__file__))
-
-    # Load images
-    template_path = os.path.join(app_root, 'template.jpg')
     template = cv2.imread(template_path)
     input_image = cv2.imread(input_image_path)
 
-    if template is None:
-        output_messages.append(f"Error loading template image from {template_path}")
-        return None, None
-    if input_image is None:
-        output_messages.append(f"Error loading input image from {input_image_path}")
-        return None, None
+    if template is None or input_image is None:
+        raise ValueError("Either template or input image could not be loaded.")
 
-    # Convert to grayscale
+    # Convert images to grayscale
     gray_template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
     gray_input = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
 
@@ -44,64 +37,55 @@ def align_and_crop_regions(input_image_path, output_messages, upload_folder):
     flann = cv2.FlannBasedMatcher(index_params, search_params)
     matches = flann.knnMatch(descriptors_template, descriptors_input, k=2)
 
-    # Store good matches using Lowe's ratio test
+    # Apply Lowe's ratio test
     good_matches = [m for m, n in matches if m.distance < 0.7 * n.distance]
 
-    # Extract matched points and compute homography
     if len(good_matches) > 10:
+        # Extract matched points
         src_pts = np.float32([keypoints_template[m.queryIdx].pt for m in good_matches]).reshape(-1, 1, 2)
         dst_pts = np.float32([keypoints_input[m.trainIdx].pt for m in good_matches]).reshape(-1, 1, 2)
 
-        # Compute Homography
+        # Compute homography
         H, mask = cv2.findHomography(dst_pts, src_pts, cv2.RANSAC, 5.0)
 
-        # Warp the input image to align with the template
+        # Align the input image
         height, width, channels = template.shape
         aligned_image = cv2.warpPerspective(input_image, H, (width, height))
 
-        # Save aligned image
-        output_aligned_path = os.path.join(upload_folder, 'aligned.jpg')
-        cv2.imwrite(output_aligned_path, aligned_image)
-
+        # Process the regions (only in-memory, no saving)
         max_vals = []
-        output_messages.append("Cropping regions...")
+        for region in model.regions:
+            x1, y1, x2, y2 = region.x1, region.y1, region.x2, region.y2
 
-        # Crop and save each region
-        for region_name, (x1, y1, x2, y2) in regions.items():
-            # Crop the region from the aligned image
+            # Ensure coordinates are ordered correctly
+            x1, x2 = min(x1, x2), max(x1, x2)
+            y1, y2 = min(y1, y2), max(y1, y2)
+
             aligned_crop = aligned_image[y1:y2, x1:x2]
-
-            # Create directory for region if it doesn't exist
-            region_dir = os.path.join(upload_folder, 'regions', region_name)
-            if not os.path.exists(region_dir):
-                os.makedirs(region_dir)
-
-            # Save cropped region as 'input.jpg'
-            cropped_image_path = os.path.join(region_dir, 'input.jpg')
-            cv2.imwrite(cropped_image_path, aligned_crop)
-            output_messages.append(f"Cropped and saved region '{region_name}'.")
-
-            # Check for alignment success
             template_crop = template[y1:y2, x1:x2]
 
-            # Convert crops to grayscale
+            # Check if aligned_crop is valid
+            if aligned_crop is None or aligned_crop.size == 0:
+                raise ValueError(f"Failed to load or process image: {input_image_path}")
+
+            # Convert to grayscale for matching
             aligned_crop_gray = cv2.cvtColor(aligned_crop, cv2.COLOR_BGR2GRAY)
             template_crop_gray = cv2.cvtColor(template_crop, cv2.COLOR_BGR2GRAY)
 
             # Perform template matching
             match_result = cv2.matchTemplate(aligned_crop_gray, template_crop_gray, cv2.TM_CCOEFF_NORMED)
-
-            # Get the match score
             _, max_val, _, _ = cv2.minMaxLoc(match_result)
             max_vals.append(max_val)
 
-        # Check if the maximum of the max_vals is less than 0.40
-        if max(max_vals) < 0.40:
-            return None, None
+        # Check if alignment was successful based on match scores
+        print(input_image_path, max_vals)
+        if max(max_vals) > 0:
+            return None  # Alignment failed
         else:
-            output_messages.append("Alignment successful.")
-            # Return the homography matrix and input image dimensions
-            input_image_shape = input_image.shape
-            return H, input_image_shape
-    else:
-        return None, None
+            # Save the aligned image
+            aligned_image_name = os.path.splitext(os.path.basename(input_image_path))[0] + '_aligned.jpg'
+            aligned_image_path = os.path.join('app/static/uploads', aligned_image_name)
+            cv2.imwrite(aligned_image_path, aligned_image)
+
+            return aligned_image_path
+    return None
