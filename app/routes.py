@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
 
-from .align import align_and_crop_regions
+from .align import align_and_crop_regions, crop_regions
 from .models import db, Model, ModelRegion, Run, Inspection
 from . import images
 import boto3
@@ -258,22 +258,42 @@ def review_images(model_id):
 
 @main.route('/models/finish/<int:model_id>', methods=['POST'])
 def finish_model(model_id):
-    # Logic for finishing the model setup
     model = Model.query.get_or_404(model_id)
 
-    # todo:
-    # for each region:
-    #     align all 5 good and 5 bad images then crop the zoomed region and save as image and save path on model object
-    #     run train_bedrock(good_img_urls, bad_img_urls, fail_desc, pass_desc) where good_img_urls and bad_img_urls are the urls of the cropped aligned regions
+    # For each region, align good and bad images, crop regions, and save URLs
+    for region in model.regions:
+        good_img_urls = []
+        bad_img_urls = []
+        output_dir = current_app.config['UPLOADED_IMAGES_DEST']
 
+        # Align and crop good images
+        for i in range(1, 6):
+            good_image_filename = getattr(model, f'good_image_{i}_aligned_filename')
+            if good_image_filename:
+                good_image_path = os.path.join(output_dir, good_image_filename)
+                cropped_good_image = crop_regions(good_image_path, model, region)
+                if cropped_good_image:
+                    setattr(region, f'good_image_{i}_crop', os.path.basename(cropped_good_image))
+                    good_img_urls.append(cropped_good_image)
 
+        # Align and crop bad images
+        for i in range(1, 6):
+            bad_image_filename = getattr(region, f'bad_image_{i}_aligned_filename')
+            if bad_image_filename:
+                bad_image_path = os.path.join(output_dir, bad_image_filename)
+                cropped_bad_image = crop_regions(bad_image_path, model, region)
+                if cropped_bad_image:
+                    setattr(region, f'bad_image_{i}_crop', os.path.basename(cropped_bad_image))
+                    bad_img_urls.append(cropped_bad_image)
 
+        # Run bedrock training
+        # train_bedrock(good_img_urls, bad_img_urls, region.fail_description, region.pass_description)
 
-    # Mark the model as 'ready'
     model.status = 'ready'
     db.session.commit()
 
     return redirect(url_for('main.model_list'))
+
 
 
 @main.route('/models/<int:model_id>')

@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34751e43-ccd7-43aa-97ec-06351e85d4e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/templates/model_review_images.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/align.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/align.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/model_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/model_good_images.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_good_images.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/model_regions.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_regions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/model_template_image.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/model_template_image.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/2642898980ce_init.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/54ed690ce0ec_add_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/55ccc9ad8905_add_pass_and_fail_descriptions_to_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/5872ac9b0257_add_aligned_images.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729159795776</updated>
       <workItem from="1729159798814" duration="11729000" />
-      <workItem from="1729512345705" duration="2252000" />
+      <workItem from="1729512345705" duration="3603000" />
     </task>
     <servers />
   </component>
@@ -112,6 +100,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/app$app.coverage" NAME="app Coverage Results" MODIFIED="1729513191577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/app$app.coverage" NAME="app Coverage Results" MODIFIED="1729515880820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

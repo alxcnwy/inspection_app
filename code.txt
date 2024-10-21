@@ -19,16 +19,19 @@
             logo.png
             uploads/
                 ImageID-69556840_2.jpg
+                ImageID-69539780_1_1_15.jpg
                 ImageID-69507921_4_aligned.jpg
                 ImageID-70014907.jpg
                 ImageID-69507921_9.jpg
                 ImageID-69507921_8.jpg
                 ImageID-69539780_1_1_14.jpg
                 ImageID-70014721.jpg
+                ImageID-69539780_1_1_15_aligned.jpg
                 ImageID-69992311.jpg
                 ImageID-69556840_3.jpg
                 ImageID-69527447.jpg
                 ImageID-69556840_1.jpg
+                ImageID-69528139_6_aligned.jpg
                 ImageID-69526808.jpg
                 ImageID-69541897_8.jpg
                 ImageID-69611658_aligned.jpg
@@ -43,9 +46,11 @@
                 ImageID-69528139_3_aligned.jpg
                 ImageID-69539780_1_1_13.jpg
                 .DS_Store
+                ImageID-69572922_1_aligned.jpg
                 ImageID-69541897.jpg
                 ImageID-69534286_8.jpg
                 ImageID-69539780_1_1_12.jpg
+                ImageID-69507921_10_aligned.jpg
                 ImageID-69556840_5.jpg
                 ImageID-69539780_1_1_9.jpg
                 ImageID-69539780_aligned.jpg
@@ -57,10 +62,12 @@
                 ImageID-69525385_aligned.jpg
                 ImageID-69640765_1.jpg
                 ImageID-69539780_1_1_11.jpg
+                ImageID-69572922_1.jpg
                 ImageID-69616854_8.jpg
                 ImageID-69556840_6.jpg
                 ImageID-69539780_1.jpg
                 ImageID-69561292_5.jpg
+                ImageID-69616854_13.jpg
                 ImageID-70014549_1.jpg
                 ImageID-69633161_aligned.jpg
                 ImageID-69546267_2.jpg
@@ -90,8 +97,12 @@
                 ImageID-69561292_4.jpg
                 ImageID-69995179.jpg
                 ImageID-69539780_2.jpg
+                ImageID-69561292_6.jpg
+                ImageID-69507921_13_aligned.jpg
                 ImageID-69616854_10.jpg
                 ImageID-69546267_1.jpg
+                ImageID-69518801_2_aligned.jpg
+                ImageID-69561292_7_aligned.jpg
                 input_4.jpg
                 ImageID-69525587_4.jpg
                 ImageID-69507780_3.jpg
@@ -102,6 +113,8 @@
                 input_5.jpg
                 ImageID-69696964_aligned.jpg
                 ImageID-69616854_11.jpg
+                ImageID-69518801_2.jpg
+                ImageID-69561292_7.jpg
                 ImageID-69561292_3.jpg
                 ImageID-70032310_1.jpg
                 ImageID-69546267_4.jpg
@@ -112,6 +125,7 @@
                 ImageID-69572597_3.jpg
                 input_10.jpg
                 ImageID-69526808_1_aligned.jpg
+                ImageID-69528139_5_aligned.jpg
                 ImageID-69572597_2.jpg
                 ImageID-69499858_2.jpg
                 ImageID-69995179_1.jpg
@@ -158,6 +172,7 @@
                 ImageID-69519600_1.jpg
                 template_2.jpg
                 template_13.jpg
+                ImageID-69507921_11_aligned.jpg
                 ImageID-69567194.jpg
                 ImageID-69532634_1.jpg
                 ImageID-69527447_3_aligned.jpg
@@ -169,12 +184,15 @@
                 ImageID-69616854.jpg
                 template_7.jpg
                 input_8.jpg
+                ImageID-69507921_10.jpg
                 ImageID-69539780_2_aligned.jpg
                 ImageID-69507780_2_aligned.jpg
                 ImageID-69561292.jpg
                 ImageID-69534286.jpg
+                ImageID-69532634_4.jpg
                 ImageID-69532634.jpg
                 ImageID-69504832_4.jpg
+                ImageID-69507921_11.jpg
                 input_9.jpg
                 template_6.jpg
                 ImageID-69539780_1_1_8_aligned.jpg
@@ -183,9 +201,12 @@
                 ImageID-69518801.jpg
                 ImageID-71031962.jpg
                 template_4.jpg
+                ImageID-69507921_13.jpg
+                template_14.jpg
                 ImageID-69507780_aligned.jpg
                 ImageID-70032773_1.jpg
                 ImageID-69504832_4_aligned.jpg
+                ImageID-69507921_12.jpg
                 ImageID-69574312.jpg
                 template_5.jpg
                 ImageID-69525587_7_aligned.jpg
@@ -194,6 +215,7 @@
                 ImageID-69578836.jpg
                 ImageID-69539780_1_2.jpg
                 ImageID-69525587_4_aligned.jpg
+                ImageID-69528139_5.jpg
                 ImageID-69616854_5.jpg
                 ImageID-69567194_1_aligned.jpg
                 input.jpg
@@ -209,15 +231,20 @@
                 ImageID-69572922.jpg
                 ImageID-69507921_1.jpg
                 ImageID-69534286_7.jpg
+                ImageID-69528139_4.jpg
                 ImageID-69616854_4.jpg
                 ImageID-69611658_1_aligned.jpg
                 ImageID-69539780_1_1_6.jpg
                 ImageID-69539780_1_1_4.jpg
                 ImageID-69539780_1_1.jpg
                 ImageID-69527447_4.jpg
+                ImageID-69556840_8.jpg
                 ImageID-69616854_6.jpg
+                ImageID-69528139_6.jpg
+                ImageID-69528139_4_aligned.jpg
                 template.jpg
                 ImageID-69546267.jpg
+                ImageID-69532634_4_aligned.jpg
                 ImageID-69534286_5.jpg
                 ImageID-69507921_3.jpg
                 ImageID-69526808_1.jpg
@@ -234,6 +261,7 @@
                 ImageID-70590958.jpg
                 ImageID-69527447_5.jpg
                 ImageID-69539780_1_1_5.jpg
+                ImageID-69556840_8_aligned.jpg
                 ImageID-69539780_1_1_1.jpg
                 ImageID-69983010.jpg
                 ImageID-69527447_1.jpg
@@ -253,9 +281,11 @@
                 ImageID-70014544_1.jpg
                 ImageID-69507921_7.jpg
                 ImageID-69534286_1.jpg
+                ImageID-69507921_12_aligned.jpg
                 ImageID-69611658_1.jpg
                 ImageID-69528139_2.jpg
                 ImageID-69616854_2.jpg
+                ImageID-69561292_6_aligned.jpg
                 ImageID-69539780_1_1_2.jpg
                 ImageID-69527447_2.jpg
                 ImageID-70032310.jpg
@@ -264,6 +294,7 @@
                 ImageID-69507921_5.jpg
                 ImageID-69541897_6.jpg
                 ImageID-69525587_1_aligned.jpg
+                ImageID-69526808_7.jpg
                 ImageID-69515661_3.jpg
                 ImageID-69515661_2.jpg
                 ImageID-69525385_6.jpg
@@ -608,6 +639,7 @@ from datetime import datetime
 import os
 from flask import current_app
 
+
 class Model(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
@@ -645,7 +677,6 @@ class Model(db.Model):
         return self.get_image_path(self.template_image_filename)
 
 
-
 class ModelRegion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     model_id = db.Column(db.Integer, db.ForeignKey('model.id'), nullable=False)
@@ -674,6 +705,20 @@ class ModelRegion(db.Model):
     bad_image_3_aligned_filename = db.Column(db.String(256))
     bad_image_4_aligned_filename = db.Column(db.String(256))
     bad_image_5_aligned_filename = db.Column(db.String(256))
+
+    # Store filenames for cropped bad images
+    bad_image_1_crop = db.Column(db.String(256))
+    bad_image_2_crop = db.Column(db.String(256))
+    bad_image_3_crop = db.Column(db.String(256))
+    bad_image_4_crop = db.Column(db.String(256))
+    bad_image_5_crop = db.Column(db.String(256))
+
+    # Store filenames for cropped good images
+    good_image_1_crop = db.Column(db.String(256))
+    good_image_2_crop = db.Column(db.String(256))
+    good_image_3_crop = db.Column(db.String(256))
+    good_image_4_crop = db.Column(db.String(256))
+    good_image_5_crop = db.Column(db.String(256))
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, onupdate=datetime.utcnow)
@@ -1001,6 +1046,14 @@ def finish_model(model_id):
     # Logic for finishing the model setup
     model = Model.query.get_or_404(model_id)
 
+    # todo:
+    # for each region:
+    #     align all 5 good and 5 bad images then crop the zoomed region and save as image and save path on model object
+    #     run train_bedrock(good_img_urls, bad_img_urls, fail_desc, pass_desc) where good_img_urls and bad_img_urls are the urls of the cropped aligned regions
+
+
+
+
     # Mark the model as 'ready'
     model.status = 'ready'
     db.session.commit()
@@ -1295,15 +1348,16 @@ h3 {
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Step 5/5: Review Images</h2>
 
     {% if all_images_aligned %}
-        <p>All images aligned. Model is ready!</p>
+        <h2>Step 5/5: Train Model</h2>
+        <p>All images aligned. Model is ready to train - will take approximately 1 minute, do not close the page!</p>
         <form method="POST" action="{{ url_for('main.finish_model', model_id=model.id) }}">
-            <button type="submit" class="btn btn-success">Finish</button>
+            <button type="submit" class="btn btn-success">Train Model</button>
         </form>
 
     {% else %}
+        <h2>Step 5/5: Review Images</h2>
         <p style="text-align:center; color:red;">Not all images could align onto the template - please upload new
             images</p>
 
